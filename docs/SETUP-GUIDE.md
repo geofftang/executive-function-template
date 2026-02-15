@@ -210,17 +210,25 @@ Use `engine/CLAUDE.md`. Apply placeholder substitutions (Step 0), then fill in:
 - Section 2: Skill commands (start with `@morning-planning` only)
 - Section 3: Skills table (only morning-planning initially, note others available)
 - Section 4: Their tool ecosystem from interview 1B
-- Section 5: Interaction principles — **calibrate based on interview 1F:**
-  - Universal principles (scaffold decisions, neutral phrasing, flexibility, momentum) → always include
-  - Intervention patterns → include patterns matching their struggles
-  - Communication by Condition → include only conditions they mentioned or that clearly map to their struggles
-  - Execution Support → include if they mentioned focus/drift issues
-  - If struggles were mainly organizational → minimal Section 5, skip intervention table
-- Section 6: Operational rules (include as-is, these are universal)
-- Section 7: Communication style from interview 1H
+- Section 5: Interaction principles — **calibrate based on 1F:**
+  - Universal principles (scaffold decisions, flexibility, momentum) → always include
+  - Neutral phrasing → include if shame/guilt patterns in 1F; otherwise optional
+  - Intervention patterns → include only patterns matching their struggles. If struggles were mainly organizational → skip intervention table entirely
+  - Communication by Condition → include only conditions they mentioned
+  - Execution Support (session-start alignment, capture-then-defer, research-before-build) → include if they mentioned focus/drift/forgetfulness; skip if organizational only
+  - **Energy-aware scheduling:** Add note from 1C — hard tasks during peak window, operational tasks during valley
+- Section 6: Core rules — **calibrate based on 1G + 1H:**
+  - Flag & Confirm → **relax if automation tolerance is "full auto"**: change to "act autonomously, surface results after". Keep strict if "hands-on control"
+  - Systems Design First → keep if they have complex projects; skip if they mainly need daily planning
+  - Research Before Answering → keep (universal)
+  - Checkpoint adherence → include if support level is moderate or full EF; skip if organizational only
+  - Workflow Design for AI Pairing → skip unless they're technical/interested in AI workflows
+- Section 7: Communication style — **from 1H, but calibrate specifics:**
+  - Warm Coach → soften brevity rules: allow 4-5 sentences, include encouragement
+  - Direct Commander → strict brevity, max 2 sentences, zero preamble
+  - Sardonic Companion → allow personality in responses, dry humor OK
+  - Neutral Professional → strict brevity, no personality, tool-like output
 - Section 8: File management (adapt to their interface from 1I)
-
-**Energy-aware scheduling:** Use interview 1C (peak/valley windows) to add a note in Section 5 about task scheduling — hard tasks during peak window, operational tasks during valley.
 
 ### Step 2: Build state.md
 
