@@ -6,6 +6,8 @@
 
 ## Phase 1: Discovery (~20 min)
 
+**Interview arc:** Factual → Personal → Vulnerable → Meta. Each section builds on earlier answers. Adaptation notes tell you how to use prior context to scaffold later questions.
+
 ### 1A: Life Areas
 
 **Ask:** "What are the 3-4 big categories your life falls into? For example, some people think in terms of: Relationships, Work/Projects, Self-Improvement, and Everything Else (chores, admin, errands)."
@@ -22,28 +24,7 @@
 
 **Key insight to share:** "The reason we separate these is so you do at least one thing from each area daily. Most people default to one category (usually work or chores) and neglect the rest."
 
-### 1B: Balance Dimensions
-
-**Ask:** "Looking at those areas — which ones tend to get neglected? What slides when you're busy?"
-
-**Follow up:** "Are there cross-cutting themes that matter to you? For example, some people care about tracking: earning money, health/wellness, creative expression, fun/social life — and those cut across multiple areas."
-
-**What you're learning:** Their "pillars" — cross-cutting balance dimensions. Used for rotation within areas (especially the catch-all area) and weekly review.
-
-**If they don't resonate with pillars:** Skip it. Pillars are optional — some people just need areas.
-
-### 1C: Aspirations
-
-**Ask:** "What's the big thing you're trying to achieve right now — or over the next year? Not a task list, just the one thing that would feel like real progress."
-
-**Follow up with WOOP framework (one question at a time):**
-1. "When you imagine that going well, what does success look and feel like?"
-2. "What usually gets in the way — not external blockers, but the internal thought or habit that derails you?"
-3. "When that obstacle hits, what's one concrete thing you could do instead?"
-
-**What you're learning:** Their WOOP plan (Wish, Outcome, Obstacle, Plan). This becomes the "North Star" in their USER-PROFILE and informs the annual identity statement. If they struggle with this, don't force it — revisit during the first strategic review.
-
-### 1D: Tools
+### 1B: Tools
 
 **Ask:** "What do you already use for managing your life? Tasks, calendar, notes, quick capture — anything."
 
@@ -61,7 +42,7 @@
 
 **Important:** Don't suggest they switch tools. Build the system around what they already use. Suggest additions only if a critical function is missing entirely.
 
-### 1E: Energy & Routines
+### 1C: Energy & Routines
 
 **Ask:** "Walk me through a typical day — when do you wake up, when is your focus sharpest, when does energy dip? Do you have any routines that anchor your day (morning, midday, evening)?"
 
@@ -76,9 +57,32 @@
 
 **What you're learning:** Their biological rhythm (Energy Map) for the USER-PROFILE, and where to anchor daily planning. If they use medication that affects focus windows, note timing.
 
+### 1D: Aspirations
+
+**Adapt from 1A:** "You mentioned [their areas]. Looking across those — what's the big thing you're trying to achieve right now, or over the next year? Not a task list, just the one thing that would feel like real progress."
+
+**Follow up with WOOP framework (one question at a time):**
+1. "When you imagine that going well, what does success look and feel like?"
+2. "What usually gets in the way — not external blockers, but the internal thought or habit that derails you?"
+3. "When that obstacle hits, what's one concrete thing you could do instead?"
+
+**What you're learning:** Their WOOP plan (Wish, Outcome, Obstacle, Plan). This becomes the "North Star" in their USER-PROFILE and informs the annual identity statement. If they struggle with this, don't force it — revisit during the first strategic review.
+
+### 1E: Balance Dimensions
+
+**Adapt from 1A + 1C + 1D:** "You've got [their areas], your energy peaks at [time], and your main goal is [aspiration]. Looking at that — which areas tend to get neglected when you're busy? What slides first?"
+
+**Follow up:** "Are there cross-cutting themes that matter to you? For example, some people care about tracking: earning money, health/wellness, creative expression, fun/social life — and those cut across multiple areas."
+
+**Suggest based on what you've heard:** If their aspiration is career-focused but they mentioned health routines fading, suggest pillars that cover both. Example: "Based on what you said, possible pillars could be: Livelihood (career progress), Wellness (those routines you mentioned), Creative (side interests), Social (relationships)."
+
+**What you're learning:** Their "pillars" — cross-cutting balance dimensions. Used for rotation within areas (especially the catch-all area) and weekly review.
+
+**If they don't resonate with pillars:** Skip it. Pillars are optional — some people just need areas.
+
 ### 1F: Struggles & Past Systems
 
-**Ask:** "What makes getting things done hard for you? Not looking for a diagnosis — just what you notice."
+**Adapt from 1D:** "You mentioned [WOOP obstacle] as what usually gets in your way. Does that show up across your life, or mainly in [aspiration context]? More broadly — what makes getting things done hard for you?"
 
 **Listen for patterns:**
 
@@ -106,6 +110,8 @@
 
 ### 1G: Working Preferences
 
+**Adapt from 1F:** If they mentioned rigid systems failing: "Since rigid systems haven't worked, would you prefer the system to be more hands-off — or do you still want structure, just with more flexibility?" If they mentioned forgetfulness: "Given the memory challenges, would you want the system to be proactive — nudging you without being asked — or should it wait until you ask?"
+
 **Ask:** "How do you prefer to interact with tools — quick text prompts, voice, visual boards, long conversations? And how do you feel about automation — full auto once it's set up, or hands-on control?"
 
 **What you're learning:** Two things:
@@ -120,9 +126,14 @@
 
 ### 1H: Communication Style
 
-**Ask:** "How should I talk to you? Some people want warm encouragement. Others want terse, direct commands. Some like dry humor."
+**Adapt from 1F:** Based on their struggles, RECOMMEND a style — don't just list options. Examples:
+- Shame/guilt prominent → "Based on what you shared, a **Warm Coach** style might help — celebrating small wins and keeping things shame-free."
+- Momentum/action-focused → "You seem action-oriented — a **Direct Commander** style would keep things terse and moving."
+- Levity helps them cope → "Sounds like humor helps you — **Sardonic Companion** might be a good fit."
+- Wants tool-like efficiency → "**Neutral Professional** — no personality, just output."
 
-**Options to offer:**
+**Then ask:** "Does that feel right, or would you prefer something different?"
+
 | Style | Tone | Best for |
 |-------|------|----------|
 | Warm Coach | Encouraging, celebrates small wins | When shame/avoidance is high |
@@ -181,7 +192,7 @@ Use `engine/CLAUDE.md`. Apply placeholder substitutions (Step 0), then fill in:
 - Section 1: Their system root path (`[USER_HOME]`) and state file location
 - Section 2: Skill commands (start with `@morning-planning` only)
 - Section 3: Skills table (only morning-planning initially, note others available)
-- Section 4: Their tool ecosystem from interview 1D
+- Section 4: Their tool ecosystem from interview 1B
 - Section 5: Interaction principles — **calibrate based on interview 1F:**
   - Universal principles (scaffold decisions, neutral phrasing, flexibility, momentum) → always include
   - Intervention patterns → include patterns matching their struggles
@@ -191,6 +202,8 @@ Use `engine/CLAUDE.md`. Apply placeholder substitutions (Step 0), then fill in:
 - Section 6: Operational rules (include as-is, these are universal)
 - Section 7: Communication style from interview 1H
 - Section 8: File management (adapt to their interface from 1I)
+
+**Energy-aware scheduling:** Use interview 1C (peak/valley windows) to add a note in Section 5 about task scheduling — hard tasks during peak window, operational tasks during valley.
 
 ### Step 2: Build state.md
 
@@ -204,7 +217,7 @@ Use `engine/ef-system/STATE.md` (already scaffolded with placeholders). Apply pl
 Use `fuel/USER-PROFILE-TEMPLATE.md`. Fill in from interview:
 - Section 1 (WOOP Plan): From interview 1C — wish, outcome, obstacle, if-then plan
 - Section 2 (Energy Map): From interview 1E — peak and valley windows
-- Section 3 (Cognitive Traits): From interview 1F — focus style, failure mechanism, initiation vs persistence
+- Section 3 (Cognitive Traits): From interview 1F — focus style, failure mechanism, initiation vs persistence. Cross-reference with 1D WOOP obstacle.
 - Section 4 (Interaction Archetype): From interview 1G (modality/automation) + 1H (communication style)
 - Section 5 (Privacy): Ask now if there are off-limits topics or key support people
 - Section 6 (Hard Rules): Derive from the above — 2-3 rules Claude must always follow for this user
@@ -215,7 +228,7 @@ Save to `ef-system/reference/USER-PROFILE.md`.
 
 Use `fuel/CONTEXT-TEMPLATE.md`. Fill in:
 - Their active projects (ask: "What are you working on right now?")
-- Their tool stack from interview 1D
+- Their tool stack from interview 1B
 - File structure based on their setup
 
 ### Step 5: Install skills
@@ -281,18 +294,7 @@ After the interview, save this for reference:
 - [Area 3]: [description]
 - [Area 4]: [description] (if applicable)
 
-### Balance Dimensions / Pillars (1B)
-- [Pillar 1]: [what it covers]
-- [Pillar 2]: [what it covers]
-- (or: "Skipped — user doesn't resonate with cross-cutting dimensions")
-
-### Aspirations / WOOP (1C)
-- Wish: [their big goal]
-- Outcome: [what success looks/feels like]
-- Obstacle: [internal blocker]
-- Plan: IF [obstacle], THEN [action]
-
-### Tools (1D)
+### Tools (1B)
 - Tasks: [tool]
 - Calendar: [tool]
 - Notes: [tool]
@@ -300,11 +302,22 @@ After the interview, save this for reference:
 - Recurring: [tool]
 - Habits: [tool or "none"]
 
-### Energy & Routines (1E)
+### Energy & Routines (1C)
 - Peak window: [time range]
 - Valley window: [time range]
 - Existing routines: [morning/midday/evening — what exists]
 - Medication timing: [if applicable]
+
+### Aspirations / WOOP (1D)
+- Wish: [their big goal]
+- Outcome: [what success looks/feels like]
+- Obstacle: [internal blocker]
+- Plan: IF [obstacle], THEN [action]
+
+### Balance Dimensions / Pillars (1E)
+- [Pillar 1]: [what it covers]
+- [Pillar 2]: [what it covers]
+- (or: "Skipped — user doesn't resonate with cross-cutting dimensions")
 
 ### Struggles & Past Systems (1F)
 - Key patterns: [what they said]
@@ -320,7 +333,7 @@ After the interview, save this for reference:
 
 ### Communication Style (1H)
 - Style: [Warm Coach / Direct Commander / Sardonic Companion / Neutral Professional]
-- Notes: [any specifics]
+- Recommended based on: [which 1F patterns drove the suggestion]
 
 ### Interface (1I)
 - Primary: [Claude Code / Claude.ai / other]
