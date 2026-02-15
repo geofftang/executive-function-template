@@ -170,11 +170,47 @@ The system needs these capabilities. Map each to what they have, and apply the f
 
 ## Phase 2: Generate Config (Claude does this)
 
-After the interview, build their system. **Do not dump all files at once.** Generate them behind the scenes and introduce one at a time.
+After the interview, build their system in a **new directory**. The template stays untouched.
 
-### Step 0: Placeholder Substitution Map
+**CRITICAL:** Never modify files in the template directory. Read from `engine/` and `fuel/` as sources, write customized versions to the output directory.
 
-Engine files use placeholder tokens that must be replaced with the user's answers from Phase 1. Build this map from the interview, then apply it across all files listed below.
+### Step 0: Create Output Directory
+
+**Ask:** "Where should I set up your system? Default is `~/executive-function/`, or if you use Obsidian, your vault root."
+
+Create the directory structure:
+```
+[OUTPUT_DIR]/
+  CLAUDE.md
+  ef-system/
+    STATE.md
+    EF-SYSTEM.md
+    BUILD-PLAN.md
+    SYSTEM-STRUCTURE.md
+    AGENTIC-PATTERNS.md
+    skills/
+    reference/
+    tasks/
+    history/
+  projects/
+  resources/
+```
+
+Copy these files from `engine/` to `[OUTPUT_DIR]/` unchanged (they're already generic):
+- `ef-system/EF-SYSTEM.md`
+- `ef-system/BUILD-PLAN.md`
+- `ef-system/AGENTIC-PATTERNS.md`
+- `ef-system/skills/` — all skill files (will be customized in Step 5)
+- `ef-system/reference/` — all reference docs
+- `ef-system/tasks/README.md`
+- `ef-system/history/README.md`
+- `projects/README.md`
+- `resources/README.md`
+- `areas/health/SUPPORT-KB.md`
+
+### Step 1: Placeholder Substitution Map
+
+Build this map from the interview, then apply it when writing each customized file.
 
 **Placeholder tokens:**
 
@@ -182,30 +218,30 @@ Engine files use placeholder tokens that must be replaced with the user's answer
 |-------|--------|---------------|
 | `[AREA_1]` through `[AREA_4]` | Interview 1A: life areas (display name) | `Projects`, `Relationships` |
 | `[area-1]` through `[area-4]` | Same, kebab-case (for folder/file paths) | `projects`, `relationships` |
-| `[PILLAR_1]` through `[PILLAR_4]` | Interview 1B: balance dimensions | `Livelihood`, `Wellness` |
+| `[PILLAR_1]` through `[PILLAR_4]` | Interview 1E: balance dimensions | `Livelihood`, `Wellness` |
 | `[pillar_1]` through `[pillar_4]` | Same, snake_case (for state keys) | `livelihood`, `wellness` |
-| `[USER_HOME]` | System path | `/Users/jane` |
+| `[USER_HOME]` | System path (from Step 0) | `/Users/jane` |
 | `[Pillar_N]` | Same as PILLAR_N (used in some narrative examples) | `Creative` |
 | `[YEAR]` | Current year (for annual planning references) | `2026` |
 | `[PREV_YEAR]` | Previous year (for annual review lookback) | `2025` |
 
-**Files containing placeholders (apply substitutions to ALL of these):**
+**Files needing substitution (read from engine/, write customized to output):**
 
-| File | What to replace |
-|------|----------------|
-| `engine/CLAUDE.md` | `[USER_HOME]`, area/pillar references in examples |
-| `engine/ef-system/STATE.md` | `[AREA_1]`–`[AREA_4]`, `[PILLAR_1]`–`[PILLAR_4]`, `[pillar_1]`–`[pillar_4]` in all sections |
-| `engine/ef-system/skills/morning-planning.md` | `[AREA_1]`–`[AREA_4]` in bucket table, state format, compliance checklist |
-| `engine/ef-system/skills/weekly-review.md` | `[AREA_1]`–`[AREA_4]` in Part C focus items |
-| `engine/ef-system/skills/inbox-triage.md` | `[AREA_1]`–`[AREA_4]` in bucket descriptions |
-| `engine/ef-system/skills/strategic-reviews.md` | `[AREA_1]`–`[AREA_4]`, `[PILLAR_1]`–`[PILLAR_4]`, `[Pillar_N]`, `[YEAR]`, `[PREV_YEAR]` throughout |
+| Source file | Placeholders |
+|------------|-------------|
+| `engine/CLAUDE.md` | `[USER_HOME]`, area/pillar references |
+| `engine/ef-system/STATE.md` | `[AREA_1]`–`[AREA_4]`, `[PILLAR_1]`–`[PILLAR_4]`, `[pillar_1]`–`[pillar_4]` |
+| `engine/ef-system/skills/morning-planning.md` | `[AREA_1]`–`[AREA_4]` |
+| `engine/ef-system/skills/weekly-review.md` | `[AREA_1]`–`[AREA_4]` |
+| `engine/ef-system/skills/inbox-triage.md` | `[AREA_1]`–`[AREA_4]` |
+| `engine/ef-system/skills/strategic-reviews.md` | `[AREA_1]`–`[AREA_4]`, `[PILLAR_1]`–`[PILLAR_4]`, `[Pillar_N]`, `[YEAR]`, `[PREV_YEAR]` |
 | `engine/ef-system/SYSTEM-STRUCTURE.md` | Area/project folder examples |
 
-**How to substitute:** Use find-and-replace across each file. If the user has fewer than 4 areas, remove unused `[AREA_N]` rows/references rather than leaving placeholders. Same for pillars.
+If the user has fewer than 4 areas, remove unused `[AREA_N]` rows/references rather than leaving placeholders. Same for pillars.
 
-### Step 1: Build CLAUDE.md
+### Step 2: Build CLAUDE.md
 
-Use `engine/CLAUDE.md`. Apply placeholder substitutions (Step 0), then fill in:
+Read `engine/CLAUDE.md` as the source. Write a customized version to `[OUTPUT_DIR]/CLAUDE.md` with:
 - Section 1: Their system root path (`[USER_HOME]`) and state file location
 - Section 2: Skill commands (start with `@morning-planning` only)
 - Section 3: Skills table (only morning-planning initially, note others available)
@@ -230,37 +266,37 @@ Use `engine/CLAUDE.md`. Apply placeholder substitutions (Step 0), then fill in:
   - Neutral Professional → strict brevity, no personality, tool-like output
 - Section 8: File management (adapt to their interface from 1I)
 
-### Step 2: Build state.md
+Apply all placeholder substitutions from Step 1.
 
-Use `engine/ef-system/STATE.md` (already scaffolded with placeholders). Apply placeholder substitutions from Step 0:
-- Replace `[AREA_1]`–`[AREA_4]` with their area names
-- Replace `[PILLAR_1]`–`[PILLAR_4]` and `[pillar_1]`–`[pillar_4]` with their pillar names
+### Step 3: Build state.md
+
+Read `engine/ef-system/STATE.md` as the source. Write customized version to `[OUTPUT_DIR]/ef-system/STATE.md` with:
+- `[AREA_1]`–`[AREA_4]` replaced with their area names
+- `[PILLAR_1]`–`[PILLAR_4]` and `[pillar_1]`–`[pillar_4]` replaced with their pillar names
 - Leave daily fields empty (first morning-planning will populate)
 
-### Step 3: Build USER-PROFILE
+### Step 4: Build USER-PROFILE
 
-Use `fuel/USER-PROFILE-TEMPLATE.md`. Fill in from interview:
-- Section 1 (WOOP Plan): From interview 1C — wish, outcome, obstacle, if-then plan
-- Section 2 (Energy Map): From interview 1E — peak and valley windows
+Read `fuel/USER-PROFILE-TEMPLATE.md`. Write filled version to `[OUTPUT_DIR]/ef-system/reference/USER-PROFILE.md`:
+- Section 1 (WOOP Plan): From interview 1D — wish, outcome, obstacle, if-then plan
+- Section 2 (Energy Map): From interview 1C — peak and valley windows
 - Section 3 (Cognitive Traits): From interview 1F — focus style, failure mechanism, initiation vs persistence. Cross-reference with 1D WOOP obstacle.
 - Section 4 (Interaction Archetype): From interview 1G (modality/automation) + 1H (communication style)
 - Section 5 (Privacy): Ask now if there are off-limits topics or key support people
 - Section 6 (Hard Rules): Derive from the above — 2-3 rules Claude must always follow for this user
 
-Save to `ef-system/reference/USER-PROFILE.md`.
+### Step 5: Build CONTEXT.md
 
-### Step 4: Build CONTEXT.md
-
-Use `fuel/CONTEXT-TEMPLATE.md`. Fill in:
+Read `fuel/CONTEXT-TEMPLATE.md`. Write filled version to `[OUTPUT_DIR]/` or first project folder:
 - Their active projects (ask: "What are you working on right now?")
 - Their tool stack from interview 1B
 - File structure based on their setup
 
-### Step 5: Install skills
+### Step 6: Install skills
 
-Apply placeholder substitutions (Step 0) to all skill files listed in the substitution map.
+For each skill file already copied in Step 0, apply placeholder substitutions from Step 1 in-place in the output directory.
 
-**Tool-gap adaptations:** For each tool gap identified in the 1B Gap Analysis, edit the relevant skill's compliance checklist:
+**Tool-gap adaptations:** For each tool gap identified in the 1B Gap Analysis, edit the relevant skill's compliance checklist in the output directory:
 - No calendar → morning-planning: remove calendar check, add "Ask user: what's on your schedule today?"
 - No email → inbox-triage: remove email inbox check, keep capture + head only
 - No capture app → skills that use capture-then-defer: write to `scratch.md` instead
@@ -268,7 +304,7 @@ Apply placeholder substitutions (Step 0) to all skill files listed in the substi
 
 Then introduce morning-planning first — walk them through a first morning planning session right now. This is how they learn the system.
 
-### Step 6: Memory Setup (Optional but Recommended)
+### Step 7: Memory Setup (Optional but Recommended)
 
 If the user wants cross-session memory (so Claude remembers past conversations):
 
@@ -277,19 +313,63 @@ If the user wants cross-session memory (so Claude remembers past conversations):
    ```json
    { "mcpServers": { "claude-mem": { "command": "claude-mem", "args": ["mcp"] } } }
    ```
-3. The `@mem` skill (`engine/ef-system/skills/mem.md`) and CLAUDE.md Memory Protocol are already configured.
+3. The `@mem` skill and CLAUDE.md Memory Protocol are already configured in the output.
 4. Memory is shared across all agents that read from `~/.claude-mem/claude-mem.db`.
 
-### Step 7: Deploy the system
+### Step 8: Save Template Config
 
-Move the customized engine into place and replace the bootstrap:
+Save the substitution map and template version to the user's system so future updates can re-apply personalizations.
 
-1. Copy `engine/` contents to the user's system root (e.g., `~/executive-function/` or their Obsidian vault root)
-2. The generated `engine/CLAUDE.md` becomes the root `CLAUDE.md` — replacing the setup bootstrap
-3. The `docs/` and `fuel/` folders are no longer needed — archive or delete them
-4. Verify the system root has: `CLAUDE.md`, `ef-system/`, `projects/`, `resources/`, and optionally `areas/`
+Write to `[OUTPUT_DIR]/ef-system/.template-config.md`:
 
-The system is now live. The setup bootstrap is gone; `CLAUDE.md` is the permanent runbook.
+```markdown
+# Template Configuration
+<!-- DO NOT EDIT — used by @update-system to apply template updates -->
+
+## Source
+- template-version: [version from template's VERSION file]
+- template-path: [path to template directory]
+- generated: [today's date]
+
+## Substitution Map
+| Token | Value |
+|-------|-------|
+| `[AREA_1]` | [their value] |
+| `[AREA_2]` | [their value] |
+| `[AREA_3]` | [their value] |
+| `[AREA_4]` | [their value or "unused"] |
+| `[area-1]` | [kebab-case] |
+| `[area-2]` | [kebab-case] |
+| `[area-3]` | [kebab-case] |
+| `[area-4]` | [kebab-case or "unused"] |
+| `[PILLAR_1]` | [their value] |
+| `[PILLAR_2]` | [their value] |
+| `[PILLAR_3]` | [their value or "unused"] |
+| `[PILLAR_4]` | [their value or "unused"] |
+| `[pillar_1]` | [snake_case] |
+| `[pillar_2]` | [snake_case] |
+| `[pillar_3]` | [snake_case or "unused"] |
+| `[pillar_4]` | [snake_case or "unused"] |
+| `[USER_HOME]` | [their home path] |
+| `[YEAR]` | [current year] |
+| `[PREV_YEAR]` | [previous year] |
+
+## Tool Gap Adaptations
+[List each gap and what was changed, e.g.:]
+- No calendar access: morning-planning compliance adjusted, checkpoint calendar check removed
+- No email: inbox-triage email step removed
+- (or: "No gaps — all capabilities covered")
+
+## Communication Style
+- Archetype: [Warm Coach / Direct Commander / Sardonic Companion / Neutral Professional]
+- Support level: [full EF / moderate / organizational only]
+```
+
+### Step 9: Verify and hand off
+
+1. Verify the output directory has: `CLAUDE.md`, `ef-system/` (with STATE.md, skills/, reference/, .template-config.md), `projects/`, `resources/`
+2. Tell the user: "Your system is ready at `[OUTPUT_DIR]`. Open Claude Code there for daily use. This template directory stays for future updates — you can `git pull` anytime."
+3. The system is live. First session starts with `@morning-planning`.
 
 ---
 
@@ -386,6 +466,102 @@ After the interview, save this for reference:
 - [project 1]: [brief description]
 - [project 2]: [brief description]
 ```
+
+---
+
+## Phase 4: Update Protocol
+
+**When:** User has an existing system and the template has been updated (`git pull`).
+
+**Entry point:** User opens Claude Code in the template directory, says "update my system" and provides their system path.
+
+### Step 1: Read state
+
+1. Read `CHANGELOG.md` in this template directory — note the current version (top heading)
+2. Read `[USER_SYSTEM]/ef-system/.template-config.md` — note their version, substitution map, tool gaps, and communication style
+3. Identify all changelog entries between their version and the current version
+
+**If no `.template-config.md` exists:** The system predates versioned updates. Ask the user to confirm their system path, then build the config by reading their existing `CLAUDE.md` (extract areas, pillars, tools, style). Save it as `.template-config.md` before proceeding.
+
+### Step 2: Categorize changes
+
+From the changelog entries, build three lists:
+
+**Auto-update files** (template-owned — safe to replace):
+| Category | Files | Update method |
+|----------|-------|---------------|
+| Skills | `ef-system/skills/*.md` | Read new template file → apply substitution map → write to user's system |
+| Reference docs | `ef-system/reference/*.md` (except USER-PROFILE.md) | Copy from template, no substitution needed |
+| Infrastructure | `BUILD-PLAN.md`, `AGENTIC-PATTERNS.md`, `SYSTEM-STRUCTURE.md` | Copy from template (SYSTEM-STRUCTURE needs substitution) |
+
+**Manual merge files** (user-owned — show diff, don't replace):
+| Category | Files | Update method |
+|----------|-------|---------------|
+| CLAUDE.md | Root `CLAUDE.md` | Show what changed in template's engine/CLAUDE.md. Suggest specific additions. Never overwrite. |
+| EF-SYSTEM.md | `ef-system/EF-SYSTEM.md` | Only if template changed task structure. Usually no action needed. |
+
+**New files** (didn't exist in their version):
+| Update method |
+|---------------|
+| Copy from template → apply substitution map → write to user's system. If it's a new skill, also suggest adding it to their CLAUDE.md skill table. |
+
+### Step 3: Present and confirm
+
+Show the user a summary:
+
+```
+Template update: [old version] → [new version]
+
+Auto-update (I'll handle these):
+- [list of files with one-line description of what changed]
+
+Manual merge (I'll show you what to add):
+- [list of files with description]
+
+New files (I'll create these):
+- [list of new files]
+
+Shall I proceed?
+```
+
+**Wait for confirmation before touching any files.**
+
+### Step 4: Apply updates
+
+1. **Auto-update files:** For each file:
+   - Read the new version from `engine/`
+   - Apply the substitution map from `.template-config.md`
+   - Re-apply tool-gap adaptations from `.template-config.md`
+   - Write to user's system (replacing the old version)
+
+2. **Manual merge files:** For each file:
+   - Show a clear before/after of the template change
+   - Suggest the specific edit to make in their file (section to add, line to change)
+   - Apply only with explicit approval
+
+3. **New files:** For each file:
+   - Read from `engine/`
+   - Apply substitution map
+   - Write to user's system
+   - If it's a skill, suggest adding the `@skillname` row to their CLAUDE.md skill table
+
+### Step 5: Update config
+
+Update `[USER_SYSTEM]/ef-system/.template-config.md`:
+- Set `template-version` to the new version
+- Set `last-updated` to today's date
+- Keep all other fields unchanged
+
+### Edge Cases
+
+**User modified a template-owned file (e.g., edited a skill protocol):**
+→ The auto-update will overwrite their changes. Before applying, diff the user's current file against the *previous* template version. If they diverge (user made custom edits), flag it: "You've customized [file]. The update will replace it. Want to: (a) accept the update and re-apply your changes, (b) keep your version, or (c) see the diff?"
+
+**User has fewer areas/pillars than placeholders:**
+→ The substitution map handles this — "unused" tokens get removed, same as initial setup.
+
+**User wants to skip some updates:**
+→ Fine. Update the version number to current anyway (to avoid re-prompting), but note skipped files in `.template-config.md` under a `## Skipped Updates` section.
 
 ---
 
