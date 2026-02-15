@@ -37,6 +37,7 @@
 | `@new-project` | project inception + structure templates |
 | `@task [action]` | task lifecycle: create new, update status (pending → in_progress → done/blocked/cancelled), auto-sync to {PROJECT}.md |
 | `@support` | Personalized cognitive/psychological scaffolding (breaking points, interventions) |
+| `@help` | List all available commands with descriptions |
 
 | `@new-task` | DEPRECATED — use `@task create` instead |
 
@@ -131,6 +132,7 @@ See `SYSTEM-STRUCTURE.md` for full folder/file rules.
 <!-- REVISIT: session-start alignment is new, untested | WHEN: confirmed working across 3+ weeks of use -->
 - **Capture-then-defer** — When a new task or idea emerges mid-session (whether on-topic or not): write it down immediately, then say "Added [idea] to [location]." Do NOT start executing it unless the user explicitly says to. Routing: project task → `{PROJECT}.md` Backlog callout. System-level improvement → `ef-system/EF-SYSTEM.md > System Roadmap`. If task needs detail, create `ef-system/tasks/{task-name}.md` subpage. The capture removes the ADHD urgency — the idea is safe, it won't be forgotten.
 - **Research-before-build** — Before drafting anything net-new (plans, policies, architecture), assess: is this a solved problem? If yes, research existing practices first (parallel subagents). See `AGENTIC-PATTERNS.md > When to Research`.
+- **Skill discovery** — When the user describes a need that maps to an available skill (Section 4), suggest it by name: "That's what `@skillname` does — want to run it?" Don't list all skills unprompted; match one skill to their current intent. If they seem unaware skills exist, mention `@help`.
 - **Friction audit before commitment** — Before committing to a task/decision/promise: pause and ask "What could slow this down?" Consider emotional friction (shame, avoidance), practical friction (custom work, unexpected complexity), timeline friction (underestimated time). State the friction upfront. Pad estimates (think 1 week → say 2).
 
 ### Communication by Condition (condensed — full in `areas/health/SUPPORT-KB.md`)
@@ -141,7 +143,7 @@ See `SYSTEM-STRUCTURE.md` for full folder/file rules.
 - **Autism:** Allow processing time. Don't demand immediate emotional labeling.
 
 ### Quick Reference
-- **Project start:** Load project's `CLAUDE.md` (if exists) + `{PROJECT}.md`
+- **Project start:** Load project's `RULES.md` (if exists) + `{PROJECT}.md`
 - **EF System start:** Load `ef-system/EF-SYSTEM.md`
 - **Tasks:** `projects/<bucket>/{PROJECT}.md` or `ef-system/EF-SYSTEM.md` — Focus / Operational / Backlog (callout) / Done (callout)
 - **State:** `ef-system/STATE.md` — In Progress, Completed, Intention, Last Active
@@ -164,14 +166,14 @@ See `SYSTEM-STRUCTURE.md` for full folder/file rules.
 - **Token Awareness:** Task/Explore subagents inherit the FULL conversation context — only use when the subagent needs multi-step research that benefits from context. For simple operations (read a file, run a script, search for a pattern), use Read/Bash/Grep/Glob directly. Subagent for 2 file reads = ~56K wasted tokens vs ~2K direct.
 - **Say-do consistency:** Don't claim completion in prose without the tool call in the same message. "Removed from backlog" means the Edit tool ran. Batch all stated intentions into tool calls immediately — don't defer to a later turn where they get dropped.
 <!-- REVISIT: Say-do consistency + momentum corollary are new behavioral rules. Check if violations recur — if so, consider a hook that flags "done/removed/fixed" in text without a preceding Edit tool call. If no violations in 4 weeks, rules are working. | WHEN: 2026-03-10 system-audit -->
-- **Error handling:** Transient errors (timeouts, port conflicts) → retry up to 2-3 times. Systematic errors (format, permissions, missing prereq) → diagnose root cause + try one fallback. If second attempt fails or you're repeating the same fix: escalate to user with diagnosis. Document recurring patterns as WORKAROUND comments in code/CLAUDE.md.
+- **Error handling:** Transient errors (timeouts, port conflicts) → retry up to 2-3 times. Systematic errors (format, permissions, missing prereq) → diagnose root cause + try one fallback. If second attempt fails or you're repeating the same fix: escalate to user with diagnosis. Document recurring patterns as WORKAROUND comments in code/RULES.md.
 - **On task completion:** Run @checkpoint to save state.
-- **After compaction:** Re-read CLAUDE.md and the active project's `{PROJECT}.md`. Verify you still know: current task, working directory, which files you've modified.
+- **After compaction:** Re-read RULES.md and the active project's `{PROJECT}.md`. Verify you still know: current task, working directory, which files you've modified.
 <!-- WORKAROUND: Claude Code compaction loses session context | CHECK: github.com/anthropics/claude-code/issues/9796 and #23751 resolved -->
 - **Workflow Design for AI Pairing:** Structure work to leverage AI strengths (exhaustive enumeration, bulk scoring, quality gates, pattern completion, format transformation). You specify (rubrics, strategies, validation criteria); AI executes.
 
 ### Design Principles
-**Rule of least authority:** Encode behavior in skills (built-in) > trigger rules in CLAUDE.md > reference in BUILD-PLAN.md. Rules exist only when behavior can't be systematized.
+**Rule of least authority:** Encode behavior in skills (built-in) > trigger rules in RULES.md > reference in BUILD-PLAN.md. Rules exist only when behavior can't be systematized.
 
 **Lifecycle tagging:** Mark temporary or conditional additions so `@system-audit` can catch them:
 - `<!-- WORKAROUND: [description] | CHECK: [upstream fix condition] -->` — upstream bugs/limitations
