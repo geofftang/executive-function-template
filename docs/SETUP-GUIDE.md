@@ -40,7 +40,24 @@
 
 **What you're learning:** What tools to reference in their CLAUDE.md and how skills should read/write data.
 
-**Important:** Don't suggest they switch tools. Build the system around what they already use. Suggest additions only if a critical function is missing entirely.
+**Important:** Don't suggest they switch tools. Build the system around what they already use.
+
+**After collecting tools, run the Gap Analysis internally:**
+
+The system needs these capabilities. Map each to what they have, and apply the fallback if they don't have it:
+
+| Capability | Why it matters | If they have it | If they DON'T |
+|-----------|---------------|-----------------|---------------|
+| **Markdown file storage** | STATE.md, skills, project hubs — the system's foundation | Use their notes app (Obsidian, filesystem, etc.) | **Minimum requirement.** If they have no markdown-capable tool, create a folder on their machine (e.g., `~/executive-function/`). Claude Code reads files directly. Claude.ai users paste content — note the extra friction. |
+| **Calendar access** | Session-start alignment, morning planning schedule-awareness | Reference their calendar tool in CLAUDE.md | Skills ask the user directly: "What's on your calendar today?" Remove automated calendar checks from morning-planning and checkpoint compliance. |
+| **Email access** | Inbox triage, digest batch mode | Reference their email tool in CLAUDE.md | Inbox triage skips the email step (just capture tool + head). Digest skips email mode. User can paste emails manually when needed. |
+| **Quick capture** | Capture-then-defer (ADHD: idea is safe, won't be forgotten) | Reference their capture app | Capture-then-defer writes to a `scratch.md` file or directly to STATE.md context notes. |
+| **Recurring tasks** | Inbox triage tool elevation (weekly+) | Reference their recurring task tool | Use calendar recurring events instead. Or maintain a simple recurring checklist in a `routines.md` file. |
+| **Habits tracking** | Balance dimension tracking, routine consistency | Reference their habits app | Skip habits — track via weekly review narrative only. Or add a simple checkbox section to STATE.md. |
+
+**If critical gap (no markdown file storage):** Suggest Obsidian (free, local-first, markdown-native). This is the ONE tool worth recommending because the entire system is built on markdown files.
+
+**Adapt skills accordingly:** When generating CLAUDE.md (Phase 2 Step 1), set the Tool Ecosystem table to reflect actual tools AND fallbacks. Skills that reference missing capabilities should have their compliance checklists adjusted (remove tool-specific checks, replace with "ask user" steps).
 
 ### 1C: Energy & Routines
 
@@ -233,7 +250,15 @@ Use `fuel/CONTEXT-TEMPLATE.md`. Fill in:
 
 ### Step 5: Install skills
 
-Apply placeholder substitutions (Step 0) to all skill files listed in the substitution map. Then introduce morning-planning first — walk them through a first morning planning session right now. This is how they learn the system.
+Apply placeholder substitutions (Step 0) to all skill files listed in the substitution map.
+
+**Tool-gap adaptations:** For each tool gap identified in the 1B Gap Analysis, edit the relevant skill's compliance checklist:
+- No calendar → morning-planning: remove calendar check, add "Ask user: what's on your schedule today?"
+- No email → inbox-triage: remove email inbox check, keep capture + head only
+- No capture app → skills that use capture-then-defer: write to `scratch.md` instead
+- No recurring task tool → inbox-triage Step 4A: replace "recurring task tool" with "calendar recurring events" or "routines.md checklist"
+
+Then introduce morning-planning first — walk them through a first morning planning session right now. This is how they learn the system.
 
 ### Step 6: Memory Setup (Optional but Recommended)
 
