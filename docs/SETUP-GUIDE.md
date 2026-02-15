@@ -272,6 +272,17 @@ If the user wants cross-session memory (so Claude remembers past conversations):
 3. The `@mem` skill (`engine/ef-system/skills/mem.md`) and CLAUDE.md Memory Protocol are already configured.
 4. Memory is shared across all agents that read from `~/.claude-mem/claude-mem.db`.
 
+### Step 7: Deploy the system
+
+Move the customized engine into place and replace the bootstrap:
+
+1. Copy `engine/` contents to the user's system root (e.g., `~/executive-function/` or their Obsidian vault root)
+2. The generated `engine/CLAUDE.md` becomes the root `CLAUDE.md` — replacing the setup bootstrap
+3. The `docs/` and `fuel/` folders are no longer needed — archive or delete them
+4. Verify the system root has: `CLAUDE.md`, `ef-system/`, `projects/`, `resources/`, and optionally `areas/`
+
+The system is now live. The setup bootstrap is gone; `CLAUDE.md` is the permanent runbook.
+
 ---
 
 ## Phase 3: First Week Protocol
