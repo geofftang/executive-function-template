@@ -7,9 +7,9 @@
 **Step 1:** Ask the user: "Are you setting up a new system, or updating an existing one?"
 
 - **New setup** → Read `docs/SETUP-GUIDE.md`, follow Phase 1–3
-- **Update existing** → Ask for their system path (e.g., `~/executive-function/`), then read `docs/SETUP-GUIDE.md` Phase 4 (Update Protocol)
+- **Update existing** → Read `docs/SETUP-GUIDE.md` Phase 4 (Update Protocol). It will find their system path from `.last-output`.
 
-**Auto-detect:** If the user says "update" and provides a path, check for `[path]/ef-system/.template-config.md`. If it exists, proceed with update. If not, they may need a fresh setup or a manual migration.
+**Auto-detect:** Phase 4 reads `.last-output` (saved during setup) to find the user's system path. If `.last-output` doesn't exist, ask for the path. Then check for `[path]/ef-system/.template-config.md` — if it exists, proceed with update. If not, build the config from their existing files first.
 
 ## Rules (apply in both modes)
 

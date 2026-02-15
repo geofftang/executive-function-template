@@ -365,7 +365,17 @@ Write to `[OUTPUT_DIR]/ef-system/.template-config.md`:
 - Support level: [full EF / moderate / organizational only]
 ```
 
-### Step 9: Verify and hand off
+### Step 9: Save breadcrumb in template
+
+Write the user's system path to `.last-output` in the template directory (this file is gitignored):
+
+```
+/Users/jane/executive-function
+```
+
+This lets the update protocol auto-detect their system path without asking.
+
+### Step 10: Verify and hand off
 
 1. Verify the output directory has: `CLAUDE.md`, `ef-system/` (with STATE.md, skills/, reference/, .template-config.md), `projects/`, `resources/`
 2. Tell the user: "Your system is ready at `[OUTPUT_DIR]`. Open Claude Code there for daily use. This template directory stays for future updates — you can `git pull` anytime."
@@ -475,13 +485,16 @@ After the interview, save this for reference:
 
 **Entry point:** User opens Claude Code in the template directory, says "update my system" and provides their system path.
 
-### Step 1: Read state
+### Step 1: Find system and read state
 
-1. Read `CHANGELOG.md` in this template directory — note the current version (top heading)
-2. Read `[USER_SYSTEM]/ef-system/.template-config.md` — note their version, substitution map, tool gaps, and communication style
-3. Identify all changelog entries between their version and the current version
+1. Read `.last-output` in this template directory — it contains the user's system path
+   - If `.last-output` doesn't exist, ask: "Where is your system directory? (e.g., `~/executive-function/`)"
+   - Confirm with the user: "Your system is at `[path]` — correct?"
+2. Read `CHANGELOG.md` in this template directory — note the current version (top heading)
+3. Read `[USER_SYSTEM]/ef-system/.template-config.md` — note their version, substitution map, tool gaps, and communication style
+4. Identify all changelog entries between their version and the current version
 
-**If no `.template-config.md` exists:** The system predates versioned updates. Ask the user to confirm their system path, then build the config by reading their existing `CLAUDE.md` (extract areas, pillars, tools, style). Save it as `.template-config.md` before proceeding.
+**If no `.template-config.md` exists:** The system predates versioned updates. Build the config by reading their existing `CLAUDE.md` (extract areas, pillars, tools, style). Save it as `.template-config.md` before proceeding.
 
 ### Step 2: Categorize changes
 
