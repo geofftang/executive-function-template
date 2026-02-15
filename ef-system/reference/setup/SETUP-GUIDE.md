@@ -375,7 +375,20 @@ Write the user's system path to `.last-output` in the template directory (this f
 
 This lets the update protocol auto-detect their system path without asking.
 
-### Step 10: Verify and hand off
+### Step 10: Initialize git repo
+
+In the output directory:
+
+```bash
+cd [OUTPUT_DIR]
+git init
+git add -A
+git commit -m "Initial EF system setup"
+```
+
+This gives the user version history from day one — they can track changes, revert if something breaks, and optionally push to a private GitHub repo.
+
+### Step 11: Verify and hand off
 
 1. Verify the output directory has: `CLAUDE.md`, `ef-system/` (with STATE.md, skills/, reference/, .template-config.md), `projects/`, `resources/`
 2. Tell the user: "Your system is ready at `[OUTPUT_DIR]`. Open Claude Code there for daily use. This template directory stays for future updates — you can `git pull` anytime."
