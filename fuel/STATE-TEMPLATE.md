@@ -12,7 +12,7 @@
 - [ ] Task 4 (Area: [AREA])
 
 ### Completed
-- (Logged during @checkpoint or @work-logging)
+- (Logged during @checkpoint)
 
 ## Weekly Goals (Week of [DATE])
 - [Goal 1]

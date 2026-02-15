@@ -4,7 +4,7 @@
 
 ---
 
-## Phase 1: Discovery (~15 min)
+## Phase 1: Discovery (~20 min)
 
 ### 1A: Life Areas
 
@@ -32,7 +32,18 @@
 
 **If they don't resonate with pillars:** Skip it. Pillars are optional — some people just need areas.
 
-### 1C: Tools
+### 1C: Aspirations
+
+**Ask:** "What's the big thing you're trying to achieve right now — or over the next year? Not a task list, just the one thing that would feel like real progress."
+
+**Follow up with WOOP framework (one question at a time):**
+1. "When you imagine that going well, what does success look and feel like?"
+2. "What usually gets in the way — not external blockers, but the internal thought or habit that derails you?"
+3. "When that obstacle hits, what's one concrete thing you could do instead?"
+
+**What you're learning:** Their WOOP plan (Wish, Outcome, Obstacle, Plan). This becomes the "North Star" in their USER-PROFILE and informs the annual identity statement. If they struggle with this, don't force it — revisit during the first strategic review.
+
+### 1D: Tools
 
 **Ask:** "What do you already use for managing your life? Tasks, calendar, notes, quick capture — anything."
 
@@ -50,7 +61,22 @@
 
 **Important:** Don't suggest they switch tools. Build the system around what they already use. Suggest additions only if a critical function is missing entirely.
 
-### 1D: Struggles
+### 1E: Energy & Routines
+
+**Ask:** "Walk me through a typical day — when do you wake up, when is your focus sharpest, when does energy dip? Do you have any routines that anchor your day (morning, midday, evening)?"
+
+**Listen for:**
+| Signal | Maps to |
+|--------|---------|
+| "I'm sharpest in the morning" | Peak window → guard for hard/important work |
+| "I crash after lunch" | Valley window → schedule low-stakes tasks or rest |
+| "I have a morning routine" | Existing scaffold to build on (morning-planning pairs well) |
+| "Evenings are chaotic" | Night routine friction → don't over-schedule evenings |
+| "I take medication at [time]" | Medication window → peak focus may be time-shifted |
+
+**What you're learning:** Their biological rhythm (Energy Map) for the USER-PROFILE, and where to anchor daily planning. If they use medication that affects focus windows, note timing.
+
+### 1F: Struggles & Past Systems
 
 **Ask:** "What makes getting things done hard for you? Not looking for a diagnosis — just what you notice."
 
@@ -68,15 +94,31 @@
 | "I'm disorganized but functional" | Mild organizational friction | Lighter scaffolding, fewer nudges |
 | "I just need help organizing my projects" | Organizational, not EF | Project patterns + reviews only |
 
+**Follow up:** "What productivity systems or approaches have you tried before? What worked, what didn't, and why?"
+
+**What you're learning:** Their failure mechanisms (Research Abyss, False Start, Guilt Spiral, etc.) and what's been tried. Past system failures are the best predictor of what friction to avoid. If rigid systems failed, keep this one loose. If they never stuck with anything, start extremely minimal.
+
 **If they mention ADHD, autism, OCD, anxiety, or other conditions:**
-→ Note it. Load the full intervention patterns (from CLAUDE-TEMPLATE Section 5) and adapt them to the mentioned conditions. See the "Communication by Condition" table.
+→ Note it. Adapt intervention patterns (from engine/CLAUDE.md Section 6) to the mentioned conditions. See the "Communication by Condition" table.
 
 **If they mention mainly organizational struggles:**
 → Lighter system. Skip intervention patterns. Focus on project structure + reviews.
 
-**What you're learning:** How much executive function support they need. This is the biggest dial in the system.
+### 1G: Working Preferences
 
-### 1E: Communication Style
+**Ask:** "How do you prefer to interact with tools — quick text prompts, voice, visual boards, long conversations? And how do you feel about automation — full auto once it's set up, or hands-on control?"
+
+**What you're learning:** Two things:
+1. **Modality preference** → Affects how skills prompt them (checklists vs narrative, granular vs summary)
+2. **Automation tolerance** → Affects how aggressively the system acts autonomously vs asks first
+
+| Automation level | System behavior |
+|-----------------|-----------------|
+| "Full auto, I trust it" | Proactive nudges, auto-capture, silent state updates |
+| "Show me what you're doing" | Explain before acting, confirm changes |
+| "I want control" | Only act when explicitly asked, minimal proactivity |
+
+### 1H: Communication Style
 
 **Ask:** "How should I talk to you? Some people want warm encouragement. Others want terse, direct commands. Some like dry humor."
 
@@ -88,9 +130,9 @@
 | Sardonic Companion | Dry humor, slightly pessimistic | When levity helps |
 | Neutral Professional | Matter-of-fact, no personality | When tool-like interaction is preferred |
 
-**What you're learning:** Their personality module. Goes into CLAUDE.md.
+**What you're learning:** Their personality module. Goes into CLAUDE.md and USER-PROFILE.
 
-### 1F: Interface
+### 1I: Interface
 
 **Ask:** "How are you using Claude? Claude Code (terminal), Claude.ai (web/app), or something else?"
 
@@ -116,6 +158,8 @@ Engine files use placeholder tokens that must be replaced with the user's answer
 | `[pillar_1]` through `[pillar_4]` | Same, snake_case (for state keys) | `livelihood`, `wellness` |
 | `[USER_HOME]` | System path | `/Users/jane` |
 | `[Pillar_N]` | Same as PILLAR_N (used in some narrative examples) | `Creative` |
+| `[YEAR]` | Current year (for annual planning references) | `2026` |
+| `[PREV_YEAR]` | Previous year (for annual review lookback) | `2025` |
 
 **Files containing placeholders (apply substitutions to ALL of these):**
 
@@ -126,7 +170,7 @@ Engine files use placeholder tokens that must be replaced with the user's answer
 | `engine/ef-system/skills/morning-planning.md` | `[AREA_1]`–`[AREA_4]` in bucket table, state format, compliance checklist |
 | `engine/ef-system/skills/weekly-review.md` | `[AREA_1]`–`[AREA_4]` in Part C focus items |
 | `engine/ef-system/skills/inbox-triage.md` | `[AREA_1]`–`[AREA_4]` in bucket descriptions |
-| `engine/ef-system/skills/strategic-reviews.md` | `[AREA_1]`–`[AREA_4]`, `[PILLAR_1]`–`[PILLAR_4]`, `[Pillar_N]` in examples throughout |
+| `engine/ef-system/skills/strategic-reviews.md` | `[AREA_1]`–`[AREA_4]`, `[PILLAR_1]`–`[PILLAR_4]`, `[Pillar_N]`, `[YEAR]`, `[PREV_YEAR]` throughout |
 | `engine/ef-system/SYSTEM-STRUCTURE.md` | Area/project folder examples |
 
 **How to substitute:** Use find-and-replace across each file. If the user has fewer than 4 areas, remove unused `[AREA_N]` rows/references rather than leaving placeholders. Same for pillars.
@@ -137,16 +181,16 @@ Use `engine/CLAUDE.md`. Apply placeholder substitutions (Step 0), then fill in:
 - Section 1: Their system root path (`[USER_HOME]`) and state file location
 - Section 2: Skill commands (start with `@morning-planning` only)
 - Section 3: Skills table (only morning-planning initially, note others available)
-- Section 4: Their tool ecosystem from interview 1C
-- Section 5: Interaction principles — **calibrate based on interview 1D:**
+- Section 4: Their tool ecosystem from interview 1D
+- Section 5: Interaction principles — **calibrate based on interview 1F:**
   - Universal principles (scaffold decisions, neutral phrasing, flexibility, momentum) → always include
   - Intervention patterns → include patterns matching their struggles
   - Communication by Condition → include only conditions they mentioned or that clearly map to their struggles
   - Execution Support → include if they mentioned focus/drift issues
   - If struggles were mainly organizational → minimal Section 5, skip intervention table
 - Section 6: Operational rules (include as-is, these are universal)
-- Section 7: Communication style from interview 1E
-- Section 8: File management (adapt to their interface)
+- Section 7: Communication style from interview 1H
+- Section 8: File management (adapt to their interface from 1I)
 
 ### Step 2: Build state.md
 
@@ -155,18 +199,30 @@ Use `engine/ef-system/STATE.md` (already scaffolded with placeholders). Apply pl
 - Replace `[PILLAR_1]`–`[PILLAR_4]` and `[pillar_1]`–`[pillar_4]` with their pillar names
 - Leave daily fields empty (first morning-planning will populate)
 
-### Step 3: Build CONTEXT.md
+### Step 3: Build USER-PROFILE
+
+Use `fuel/USER-PROFILE-TEMPLATE.md`. Fill in from interview:
+- Section 1 (WOOP Plan): From interview 1C — wish, outcome, obstacle, if-then plan
+- Section 2 (Energy Map): From interview 1E — peak and valley windows
+- Section 3 (Cognitive Traits): From interview 1F — focus style, failure mechanism, initiation vs persistence
+- Section 4 (Interaction Archetype): From interview 1G (modality/automation) + 1H (communication style)
+- Section 5 (Privacy): Ask now if there are off-limits topics or key support people
+- Section 6 (Hard Rules): Derive from the above — 2-3 rules Claude must always follow for this user
+
+Save to `ef-system/reference/USER-PROFILE.md`.
+
+### Step 4: Build CONTEXT.md
 
 Use `fuel/CONTEXT-TEMPLATE.md`. Fill in:
 - Their active projects (ask: "What are you working on right now?")
-- Their tool stack from interview 1C
+- Their tool stack from interview 1D
 - File structure based on their setup
 
-### Step 4: Install skills
+### Step 5: Install skills
 
 Apply placeholder substitutions (Step 0) to all skill files listed in the substitution map. Then introduce morning-planning first — walk them through a first morning planning session right now. This is how they learn the system.
 
-### Step 5: Memory Setup (Optional but Recommended)
+### Step 6: Memory Setup (Optional but Recommended)
 
 If the user wants cross-session memory (so Claude remembers past conversations):
 
@@ -219,18 +275,24 @@ After the interview, save this for reference:
 ## Setup Interview Notes
 **Date:** [date]
 
-### Life Areas
+### Life Areas (1A)
 - [Area 1]: [description]
 - [Area 2]: [description]
 - [Area 3]: [description]
 - [Area 4]: [description] (if applicable)
 
-### Balance Dimensions (Pillars)
+### Balance Dimensions / Pillars (1B)
 - [Pillar 1]: [what it covers]
 - [Pillar 2]: [what it covers]
 - (or: "Skipped — user doesn't resonate with cross-cutting dimensions")
 
-### Tools
+### Aspirations / WOOP (1C)
+- Wish: [their big goal]
+- Outcome: [what success looks/feels like]
+- Obstacle: [internal blocker]
+- Plan: IF [obstacle], THEN [action]
+
+### Tools (1D)
 - Tasks: [tool]
 - Calendar: [tool]
 - Notes: [tool]
@@ -238,16 +300,29 @@ After the interview, save this for reference:
 - Recurring: [tool]
 - Habits: [tool or "none"]
 
-### Struggles → Support Level
+### Energy & Routines (1E)
+- Peak window: [time range]
+- Valley window: [time range]
+- Existing routines: [morning/midday/evening — what exists]
+- Medication timing: [if applicable]
+
+### Struggles & Past Systems (1F)
 - Key patterns: [what they said]
 - Support level: [full EF / moderate / organizational only]
 - Conditions mentioned: [if any]
+- Past system failures: [what they tried, why it failed]
+- Failure mechanism: [Research Abyss / False Start / Guilt Spiral / other]
 
-### Communication Style
-- Style: [chosen style]
+### Working Preferences (1G)
+- Modality: [text prompts / voice / visual / mixed]
+- Automation tolerance: [full auto / show me / hands-on]
+- Granularity: [tactical micro-steps / high-level summary]
+
+### Communication Style (1H)
+- Style: [Warm Coach / Direct Commander / Sardonic Companion / Neutral Professional]
 - Notes: [any specifics]
 
-### Interface
+### Interface (1I)
 - Primary: [Claude Code / Claude.ai / other]
 
 ### Active Projects

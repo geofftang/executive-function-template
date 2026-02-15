@@ -91,7 +91,7 @@ The SETUP-GUIDE interview collects everything needed to fill the templates.
 6. **inbox-triage** — when inboxes feel overwhelming
 7. **digest** — when processing articles/content regularly
 8. **strategic-reviews** — when monthly/quarterly planning is needed
-9. **therapy** — AI therapeutic scaffolding (neurodivergent support patterns)
+9. **support** — personalized cognitive/psychological scaffolding
 
 **The interview determines starting configuration. Not everyone needs every skill.**
 

@@ -23,9 +23,10 @@ baseline-version: v1.0
 - **Initiation vs. Persistence:** [e.g., High Initiation / Low Persistence]
 
 ## 4. Interaction Archetype
-- **Support Personality:** [Sergeant / Coach / Librarian]
+- **Support Personality:** [Warm Coach / Direct Commander / Sardonic Companion / Neutral Professional]
+- **Modality Preference:** [Quick text prompts / Voice / Visual boards / Mixed]
+- **Automation Tolerance:** [Full auto / Show me first / Hands-on control]
 - **Granularity Preference:** [e.g., 1-inch tactical steps / 30,000ft summary]
-- **Tone:** [e.g., Strictly Direct / Supportive / Adversarial]
 
 ## 5. Privacy & Social Anchors
 - **Social Anchor:** [Primary support partner name]
