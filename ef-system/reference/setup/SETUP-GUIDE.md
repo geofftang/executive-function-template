@@ -120,7 +120,7 @@ The system needs these capabilities. Map each to what they have, and apply the f
 **What you're learning:** Their failure mechanisms (Research Abyss, False Start, Guilt Spiral, etc.) and what's been tried. Past system failures are the best predictor of what friction to avoid. If rigid systems failed, keep this one loose. If they never stuck with anything, start extremely minimal.
 
 **If they mention ADHD, autism, OCD, anxiety, or other conditions:**
-→ Note it. Adapt intervention patterns (from engine/CLAUDE.md Section 6) to the mentioned conditions. See the "Communication by Condition" table.
+→ Note it. Adapt intervention patterns (from CLAUDE-TEMPLATE.md Section 6) to the mentioned conditions. See the "Communication by Condition" table.
 
 **If they mention mainly organizational struggles:**
 → Lighter system. Skip intervention patterns. Focus on project structure + reviews.
@@ -172,7 +172,7 @@ The system needs these capabilities. Map each to what they have, and apply the f
 
 After the interview, build their system in a **new directory**. The template stays untouched.
 
-**CRITICAL:** Never modify files in the template directory. Read from `engine/` and `fuel/` as sources, write customized versions to the output directory.
+**CRITICAL:** Never modify files in the template directory. Read template source files, write customized versions to the output directory.
 
 ### Step 0: Create Output Directory
 
@@ -196,12 +196,12 @@ Create the directory structure:
   resources/
 ```
 
-Copy these files from `engine/` to `[OUTPUT_DIR]/` unchanged (they're already generic):
+Copy these files from the template to `[OUTPUT_DIR]/` unchanged (they're already generic):
 - `ef-system/EF-SYSTEM.md`
 - `ef-system/BUILD-PLAN.md`
 - `ef-system/AGENTIC-PATTERNS.md`
-- `ef-system/skills/` — all skill files (will be customized in Step 5)
-- `ef-system/reference/` — all reference docs
+- `ef-system/skills/` — all skill files (will be customized in Step 6)
+- `ef-system/reference/` — all reference docs **except** `reference/setup/` (setup-only, stays in template)
 - `ef-system/tasks/README.md`
 - `ef-system/history/README.md`
 - `projects/README.md`
@@ -225,23 +225,23 @@ Build this map from the interview, then apply it when writing each customized fi
 | `[YEAR]` | Current year (for annual planning references) | `2026` |
 | `[PREV_YEAR]` | Previous year (for annual review lookback) | `2025` |
 
-**Files needing substitution (read from engine/, write customized to output):**
+**Files needing substitution (read from template, write customized to output):**
 
 | Source file | Placeholders |
 |------------|-------------|
-| `engine/CLAUDE.md` | `[USER_HOME]`, area/pillar references |
-| `engine/ef-system/STATE.md` | `[AREA_1]`–`[AREA_4]`, `[PILLAR_1]`–`[PILLAR_4]`, `[pillar_1]`–`[pillar_4]` |
-| `engine/ef-system/skills/morning-planning.md` | `[AREA_1]`–`[AREA_4]` |
-| `engine/ef-system/skills/weekly-review.md` | `[AREA_1]`–`[AREA_4]` |
-| `engine/ef-system/skills/inbox-triage.md` | `[AREA_1]`–`[AREA_4]` |
-| `engine/ef-system/skills/strategic-reviews.md` | `[AREA_1]`–`[AREA_4]`, `[PILLAR_1]`–`[PILLAR_4]`, `[Pillar_N]`, `[YEAR]`, `[PREV_YEAR]` |
-| `engine/ef-system/SYSTEM-STRUCTURE.md` | Area/project folder examples |
+| `CLAUDE-TEMPLATE.md` | `[USER_HOME]`, area/pillar references |
+| `ef-system/STATE.md` | `[AREA_1]`–`[AREA_4]`, `[PILLAR_1]`–`[PILLAR_4]`, `[pillar_1]`–`[pillar_4]` |
+| `ef-system/skills/morning-planning.md` | `[AREA_1]`–`[AREA_4]` |
+| `ef-system/skills/weekly-review.md` | `[AREA_1]`–`[AREA_4]` |
+| `ef-system/skills/inbox-triage.md` | `[AREA_1]`–`[AREA_4]` |
+| `ef-system/skills/strategic-reviews.md` | `[AREA_1]`–`[AREA_4]`, `[PILLAR_1]`–`[PILLAR_4]`, `[Pillar_N]`, `[YEAR]`, `[PREV_YEAR]` |
+| `ef-system/SYSTEM-STRUCTURE.md` | Area/project folder examples |
 
 If the user has fewer than 4 areas, remove unused `[AREA_N]` rows/references rather than leaving placeholders. Same for pillars.
 
 ### Step 2: Build CLAUDE.md
 
-Read `engine/CLAUDE.md` as the source. Write a customized version to `[OUTPUT_DIR]/CLAUDE.md` with:
+Read `CLAUDE-TEMPLATE.md` as the source. Write a customized version to `[OUTPUT_DIR]/CLAUDE.md` with:
 - Section 1: Their system root path (`[USER_HOME]`) and state file location
 - Section 2: Skill commands (start with `@morning-planning` only)
 - Section 3: Skills table (only morning-planning initially, note others available)
@@ -270,14 +270,14 @@ Apply all placeholder substitutions from Step 1.
 
 ### Step 3: Build state.md
 
-Read `engine/ef-system/STATE.md` as the source. Write customized version to `[OUTPUT_DIR]/ef-system/STATE.md` with:
+Read `ef-system/STATE.md` as the source. Write customized version to `[OUTPUT_DIR]/ef-system/STATE.md` with:
 - `[AREA_1]`–`[AREA_4]` replaced with their area names
 - `[PILLAR_1]`–`[PILLAR_4]` and `[pillar_1]`–`[pillar_4]` replaced with their pillar names
 - Leave daily fields empty (first morning-planning will populate)
 
 ### Step 4: Build USER-PROFILE
 
-Read `fuel/USER-PROFILE-TEMPLATE.md`. Write filled version to `[OUTPUT_DIR]/ef-system/reference/USER-PROFILE.md`:
+Read `ef-system/reference/setup/USER-PROFILE-TEMPLATE.md`. Write filled version to `[OUTPUT_DIR]/ef-system/reference/USER-PROFILE.md`:
 - Section 1 (WOOP Plan): From interview 1D — wish, outcome, obstacle, if-then plan
 - Section 2 (Energy Map): From interview 1C — peak and valley windows
 - Section 3 (Cognitive Traits): From interview 1F — focus style, failure mechanism, initiation vs persistence. Cross-reference with 1D WOOP obstacle.
@@ -287,7 +287,7 @@ Read `fuel/USER-PROFILE-TEMPLATE.md`. Write filled version to `[OUTPUT_DIR]/ef-s
 
 ### Step 5: Build CONTEXT.md
 
-Read `fuel/CONTEXT-TEMPLATE.md`. Write filled version to `[OUTPUT_DIR]/` or first project folder:
+Generate from interview data. Write to `[OUTPUT_DIR]/` or first project folder:
 - Their active projects (ask: "What are you working on right now?")
 - Their tool stack from interview 1B
 - File structure based on their setup
@@ -514,7 +514,7 @@ From the changelog entries, build three lists:
 **Manual merge files** (user-owned — show diff, don't replace):
 | Category | Files | Update method |
 |----------|-------|---------------|
-| CLAUDE.md | Root `CLAUDE.md` | Show what changed in template's engine/CLAUDE.md. Suggest specific additions. Never overwrite. |
+| CLAUDE.md | Root `CLAUDE.md` | Show what changed in template's CLAUDE-TEMPLATE.md. Suggest specific additions. Never overwrite. |
 | EF-SYSTEM.md | `ef-system/EF-SYSTEM.md` | Only if template changed task structure. Usually no action needed. |
 
 **New files** (didn't exist in their version):
@@ -546,7 +546,7 @@ Shall I proceed?
 ### Step 4: Apply updates
 
 1. **Auto-update files:** For each file:
-   - Read the new version from `engine/`
+   - Read the new version from the template
    - Apply the substitution map from `.template-config.md`
    - Re-apply tool-gap adaptations from `.template-config.md`
    - Write to user's system (replacing the old version)
@@ -557,7 +557,7 @@ Shall I proceed?
    - Apply only with explicit approval
 
 3. **New files:** For each file:
-   - Read from `engine/`
+   - Read from the template
    - Apply substitution map
    - Write to user's system
    - If it's a skill, suggest adding the `@skillname` row to their CLAUDE.md skill table

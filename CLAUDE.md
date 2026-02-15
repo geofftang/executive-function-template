@@ -6,8 +6,8 @@
 
 **Step 1:** Ask the user: "Are you setting up a new system, or updating an existing one?"
 
-- **New setup** → Read `docs/SETUP-GUIDE.md`, follow Phase 1–3
-- **Update existing** → Read `docs/SETUP-GUIDE.md` Phase 4 (Update Protocol). It will find their system path from `.last-output`.
+- **New setup** → Read `ef-system/reference/setup/README.md` (package overview), then `ef-system/reference/setup/SETUP-GUIDE.md` (interview protocol). Follow Phase 1–3.
+- **Update existing** → Read `ef-system/reference/setup/SETUP-GUIDE.md` Phase 4 (Update Protocol). It will find their system path from `.last-output`.
 
 **Auto-detect:** Phase 4 reads `.last-output` (saved during setup) to find the user's system path. If `.last-output` doesn't exist, ask for the path. Then check for `[path]/ef-system/.template-config.md` — if it exists, proceed with update. If not, build the config from their existing files first.
 
