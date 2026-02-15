@@ -385,32 +385,36 @@ This lets the update protocol auto-detect their system path without asking.
 
 ## Phase 3: First Week Protocol
 
-**Explain to the user:**
+**Calibrate pace from interview 1F (support level):**
 
-"We're starting with just morning planning. Here's how the first two weeks work:"
+### If Full EF Scaffolding
+User has significant executive function challenges. Gradual rollout, but not glacial.
 
-### Days 1-3: Morning Planning Only
-- Run `@morning-planning` each morning (or whenever you start your day)
-- Pick one task from each life area
-- That's it. No other system overhead.
+**Day 1:** Morning planning + checkpoint. Walk through both live.
+**Day 3:** Add inbox triage (if they have email/capture tools).
+**End of week 1:** Weekly review.
+**Week 2+:** Add remaining skills as specific friction emerges.
 
-### Days 4-7: Add Checkpoints
-- When you finish a work session or step away, run `@checkpoint`
-- This saves what you were doing so we can pick up next time
-- Still doing morning planning daily
+### If Moderate Support
+User has some challenges but is generally functional. Faster rollout.
 
-### Week 2: Add Weekly Review
-- At the end of week 1, run `@weekly-review`
-- Look at what happened, what was neglected, set next week's focus
-- Continue morning planning + checkpoints
+**Day 1:** Morning planning + checkpoint + inbox triage. Walk through each once.
+**End of week 1:** Weekly review.
+**Week 2:** All skills available, introduce as relevant.
 
-### Beyond Week 2: As Friction Emerges
-- **Feeling overwhelmed by inboxes?** → Add `@inbox-triage`
-- **Want deeper content processing?** → Add `@digest`
-- **Need longer-horizon planning?** → Add `@strategic-reviews`
-- **Need structured task tracking?** → Add `@task`
+### If Organizational Only
+User mainly needs structure, not scaffolding. Everything available immediately.
 
-**Key message:** "You don't need all the skills. Add them when you feel specific friction, not before."
+**Day 1:** Walk through all core skills (morning planning, checkpoint, inbox triage, weekly review). User picks which to adopt.
+**Week 1:** Full system available. Adjust based on what sticks.
+
+### For all levels — add on demand:
+- **Want deeper content processing?** → `@digest`
+- **Need longer-horizon planning?** → `@strategic-reviews`
+- **Need structured task tracking?** → `@task`
+- **Need emotional/cognitive support?** → `@support`
+
+**Key message:** "Everything is available. Start with the core loop (plan → do → checkpoint → review) and add the rest when you feel specific friction."
 
 ---
 
