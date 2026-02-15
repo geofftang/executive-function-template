@@ -26,29 +26,30 @@ The user should never feel overwhelmed by the system itself. You hold the comple
 | **README.md** | This file — package overview for Claude |
 | **SETUP-GUIDE.md** | Interview protocol to customize the system for a new user |
 
-### templates/
+### fuel/ (Templates for Personalization)
 
 | File | Purpose |
 |------|---------|
-| CLAUDE-TEMPLATE.md | System config — rules, skills, interaction principles |
-| CONTEXT-TEMPLATE.md | Living state — current projects, insights, session log |
-| STATE-TEMPLATE.md | Daily tracking — intention, progress, balance |
-| project-patterns.md | How to structure projects (2-5 file pattern) |
+| STATE-TEMPLATE.md | Daily tracking scaffold — intention, progress, balance |
+| USER-PROFILE-TEMPLATE.md | User profile — WOOP plan, energy map, cognitive traits |
+| CONTEXT-TEMPLATE.md | Project hub template — focus, backlog, session log |
 
-### skills/
+### engine/ (The Deployed System)
 
-| File | Purpose |
+| Path | Purpose |
 |------|---------|
-| morning-planning.md | Daily planning — set intention, surface what needs attention |
-| checkpoint.md | Mid-session state save + alignment check |
-| work-logging.md | End-of-session logging to project files |
-| weekly-review.md | Pattern-informed weekly review + reset |
-| strategic-reviews.md | Monthly / quarterly / annual planning |
-| inbox-triage.md | Process inboxes (email, notes, captures) into organized buckets |
-| project-management.md | Cross-project health scan + prioritization |
-| digest.md | Deep read + route content (articles, newsletters, anything) |
+| `CLAUDE.md` | System config — rules, skills, interaction principles |
+| `ef-system/STATE.md` | Daily tracking (scaffold — populated by @morning-planning) |
+| `ef-system/EF-SYSTEM.md` | Task hub + system roadmap |
+| `ef-system/BUILD-PLAN.md` | Architecture + intervention patterns |
+| `ef-system/SYSTEM-STRUCTURE.md` | PARA organization, navigation, schemas |
+| `ef-system/AGENTIC-PATTERNS.md` | Automation patterns + research heuristics |
+| `ef-system/skills/` | Protocol files (@morning-planning, @checkpoint, etc.) |
+| `ef-system/tasks/` | Deep-dive task subpages |
+| `ef-system/history/` | Weekly review archives |
+| `ef-system/extensions/` | Optional skills (therapy, interview prep, contemplation) |
 
-### concepts/
+### docs/ (Concepts — works as-is)
 
 | File | Purpose |
 |------|---------|
@@ -63,11 +64,11 @@ The user should never feel overwhelmed by the system itself. You hold the comple
 
 | Category | Customization Level | What Changes |
 |----------|-------------------|--------------|
-| **CLAUDE-TEMPLATE** | High | Tool ecosystem, skills table, interaction depth |
-| **STATE-TEMPLATE** | Medium | Area names, pillar names |
-| **Skills** | Low-Medium | Path references, tool commands, area names |
-| **Concepts** | Works as-is | Universal principles, no personalization needed |
-| **project-patterns** | Works as-is | Generic project management pattern |
+| **engine/CLAUDE.md** | High | Tool ecosystem, skills table, interaction depth, root path |
+| **fuel/STATE-TEMPLATE** | Medium | Area names, pillar names |
+| **fuel/USER-PROFILE-TEMPLATE** | High | WOOP plan, energy map, cognitive traits, interaction style |
+| **engine/ef-system/skills/** | Low-Medium | Path references, tool commands, area names |
+| **docs/ (concepts)** | Works as-is | Universal principles, no personalization needed |
 
 The SETUP-GUIDE interview collects everything needed to fill the templates.
 
@@ -86,10 +87,11 @@ The SETUP-GUIDE interview collects everything needed to fill the templates.
 4. **checkpoint** skill — state saves when stepping away
 
 ### Week 3+: As Needed
-6. **weekly-review** — when weekly patterns start mattering
-7. **inbox-triage** — when inboxes feel overwhelming
-8. **project-management** — when juggling multiple projects
-9. Other skills — when specific friction emerges
+5. **weekly-review** — when weekly patterns start mattering
+6. **inbox-triage** — when inboxes feel overwhelming
+7. **digest** — when processing articles/content regularly
+8. **strategic-reviews** — when monthly/quarterly planning is needed
+9. **Extensions** (ef-system/extensions/) — therapy, interview prep, contemplation — add when relevant
 
 **The interview determines starting configuration. Not everyone needs every skill.**
 

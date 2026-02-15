@@ -104,7 +104,7 @@ After the interview, build their system. **Do not dump all files at once.** Gene
 
 ### Step 1: Build CLAUDE.md
 
-Use `templates/CLAUDE-TEMPLATE.md`. Fill in:
+Use `engine/CLAUDE.md`. Fill in:
 - Section 1: Their system root path and state file location
 - Section 2: Skill commands (start with `@morning-planning` only)
 - Section 3: Skills table (only morning-planning initially, note others available)
@@ -121,21 +121,33 @@ Use `templates/CLAUDE-TEMPLATE.md`. Fill in:
 
 ### Step 2: Build state.md
 
-Use `templates/STATE-TEMPLATE.md`. Fill in:
+Use `fuel/STATE-TEMPLATE.md`. Fill in:
 - Their area names from interview 1A
 - Their pillar names from interview 1B (if applicable)
 - Leave daily fields empty (first morning-planning will populate)
 
 ### Step 3: Build CONTEXT.md
 
-Use `templates/CONTEXT-TEMPLATE.md`. Fill in:
+Use `fuel/CONTEXT-TEMPLATE.md`. Fill in:
 - Their active projects (ask: "What are you working on right now?")
 - Their tool stack from interview 1C
 - File structure based on their setup
 
 ### Step 4: Install morning-planning
 
-Copy `skills/morning-planning.md` with their area names substituted. Walk them through a first morning planning session right now — this is how they learn the system.
+Copy `engine/ef-system/skills/morning-planning.md` with their area names substituted. Walk them through a first morning planning session right now — this is how they learn the system.
+
+### Step 5: Memory Setup (Optional but Recommended)
+
+If the user wants cross-session memory (so Claude remembers past conversations):
+
+1. Install claude-mem MCP: `npm install -g @thedotmack/claude-mem`
+2. Add to Claude Code MCP config (`.claude/settings.json`):
+   ```json
+   { "mcpServers": { "claude-mem": { "command": "claude-mem", "args": ["mcp"] } } }
+   ```
+3. The `@mem` skill (`engine/ef-system/skills/mem.md`) and CLAUDE.md Memory Protocol are already configured.
+4. Memory is shared across all agents that read from `~/.claude-mem/claude-mem.db`.
 
 ---
 
