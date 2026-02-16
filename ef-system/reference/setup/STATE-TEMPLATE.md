@@ -14,10 +14,10 @@
 ### Completed
 - (Logged during @checkpoint)
 
-## Weekly Goals (Week of [DATE])
-- [Goal 1]
-- [Goal 2]
-- [Goal 3]
+## Weekly Goals (Week 1)
+- [ ] Set up [TOP_PROJECT] with `@project create`
+- [ ] Try `@checkpoint` at end of first session
+- [ ] Run `@weekly-review` at end of week
 
 ## Last Active
 | Area | Date | Status |

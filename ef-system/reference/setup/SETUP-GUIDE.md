@@ -555,22 +555,20 @@ Read `ef-system/reference/setup/USER-PROFILE-TEMPLATE.md`. Write filled version 
 - Section 5 (Privacy): Ask now if there are off-limits topics or key support people
 - Section 6 (Hard Rules): Derive from the formulation model — 2-3 rules the AI must always follow for this user
 
-### Step 5: Seed projects from Q4
+### Step 5: Seed Weekly Goals from Q4
 
-For each active project the user mentioned in Q4, create a lightweight project stub:
+Pre-populate `STATE.md > Weekly Goals` with onboarding goals derived from the interview:
 
+```markdown
+## Weekly Goals (Week 1)
+- [ ] Set up [top priority project from Q4] with `@project create`
+- [ ] Try `@checkpoint` at end of first session
+- [ ] Run `@weekly-review` at end of week
 ```
-[OUTPUT_DIR]/projects/[project-name]/[project-name].md
-```
 
-Each stub contains:
-- Project name as heading
-- One-line description (from Q4)
-- Status (from Q4: just starting / in progress / stuck)
-- Area assignment (from Q4 cross-reference)
-- Empty Focus / Backlog / Done sections
+If the user mentioned 2-3 active projects in Q4, add one `@project create` goal per project. Morning planning reads Weekly Goals and will surface these naturally — the user works through them at their own pace.
 
-This ensures `@morning-planning` has project files to read on day 1. The user can flesh these out later via `@project create` or `@plan`.
+**Don't create project files yet.** `@project create` handles folder creation, runs `@plan` for Foundation sections, and builds the full project hub. The Weekly Goals just queue the work.
 
 ### Step 6: Install skills
 
@@ -692,7 +690,7 @@ This gives the user version history from day one — they can track changes, rev
 
 ## Phase 3: First Week Protocol
 
-**Project stubs are ready to use.** The stubs from Step 5 are enough for morning planning and daily work. `@plan` is available when the user wants to think strategically about a project's direction — don't push it during week 1. Let them pull it when they hit friction or want depth.
+**Week 1 goals are pre-seeded in STATE.md.** Morning planning will surface `@project create` goals from Step 5. Each `@project create` runs `@plan` to build a proper Foundation — this is intentional, not optional. But one project at a time, at the user's pace.
 
 **Calibrate pace from Q5 (support level):**
 

@@ -108,7 +108,15 @@ Edit `ef-system/.template-config.md`:
 - Add `last-updated: [today's date]`
 - Keep all other fields unchanged
 
-### Step 7: Removed files
+### Step 7: Note update in STATE.md
+
+Append a one-liner to `ef-system/STATE.md > Context` (or create the section if missing):
+```
+- System updated to v[new] ([date]). Key changes: [1-2 sentence summary of what's new].
+```
+Morning planning will surface this naturally so the user knows what changed.
+
+### Step 8: Removed files
 
 If the changelog lists removed files:
 - Tell the user which files to delete (don't delete automatically)
