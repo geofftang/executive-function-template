@@ -692,6 +692,8 @@ This gives the user version history from day one — they can track changes, rev
 
 ## Phase 3: First Week Protocol
 
+**Project stubs are ready to use.** The stubs from Step 5 are enough for morning planning and daily work. `@plan` is available when the user wants to think strategically about a project's direction — don't push it during week 1. Let them pull it when they hit friction or want depth.
+
 **Calibrate pace from Q5 (support level):**
 
 ### If Full EF Scaffolding
