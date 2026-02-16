@@ -555,12 +555,22 @@ Read `ef-system/reference/setup/USER-PROFILE-TEMPLATE.md`. Write filled version 
 - Section 5 (Privacy): Ask now if there are off-limits topics or key support people
 - Section 6 (Hard Rules): Derive from the formulation model — 2-3 rules the AI must always follow for this user
 
-### Step 5: Build CONTEXT.md
+### Step 5: Seed projects from Q4
 
-Generate from interview data. Write to `[OUTPUT_DIR]/` or first project folder:
-- Their active projects from Q4 (with status)
-- Their tool stack from Q3
-- File structure based on their setup
+For each active project the user mentioned in Q4, create a lightweight project stub:
+
+```
+[OUTPUT_DIR]/projects/[project-name]/[project-name].md
+```
+
+Each stub contains:
+- Project name as heading
+- One-line description (from Q4)
+- Status (from Q4: just starting / in progress / stuck)
+- Area assignment (from Q4 cross-reference)
+- Empty Focus / Backlog / Done sections
+
+This ensures `@morning-planning` has project files to read on day 1. The user can flesh these out later via `@project create` or `@plan`.
 
 ### Step 6: Install skills
 
