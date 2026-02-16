@@ -9,6 +9,19 @@ Each entry categorizes changes by update type:
 
 ---
 
+## 1.7.1
+
+Vault access: filesystem-only, no Obsidian MCP dependency.
+
+### Auto-update (template-owned)
+- `RULES-TEMPLATE.md` — Replaced "Obsidian Querying Protocol" (MCP-based) with "Vault Access Protocol" (filesystem-only). Tool table updated. Added note about when MCPs are appropriate (non-file-based tool APIs).
+- `ef-system/skills/weekly-review.md` — Removed MCP reference from sync logic.
+
+### Notes
+- Obsidian MCP is redundant when Claude Code has filesystem access. `patch_content` can destroy content by replacing entire heading subtrees. Use Read/Edit/Write/Glob/Grep for all vault operations.
+
+---
+
 ## 1.7.0
 
 Problem-structuring, milestone-based workflow, and decision record pattern.
