@@ -2,7 +2,7 @@
 
 Living reference for automation and agentic design thinking. Organized around the Four Pillars of AI Infrastructure. Grows as patterns are discovered and validated.
 
-**This is also a personal pattern library.** Every framework here (enumerate-tag-filter, Ralph loop, parallel research sprint, etc.) is a reusable asset. See `ef-system/tasks/cognitive-strengths-mapping.md` for the full cognitive strengths framework.
+**This is also a personal pattern library.** Every framework here (enumerate-tag-filter, Ralph loop, parallel research sprint, etc.) is a reusable asset.
 
 ---
 

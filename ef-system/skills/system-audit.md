@@ -52,7 +52,7 @@ Everything in Light mode, plus:
 8. **Strengths lens pass.**
    - "Are we leveraging strengths or just compensating for weaknesses?" — check recent project designs, CLAUDE.md rules, skill changes
    - Chua's test: "Am I shipping faster than expected?" If yes, infrastructure investment is working. If no, it may be avoidance.
-   - Any implicit abstraction transfers (formal methods applied cross-domain) that should be codified as system rules? (Reference: `ef-system/tasks/cognitive-strengths-mapping.md`)
+   - Any implicit abstraction transfers (formal methods applied cross-domain) that should be codified as system rules?
 
 9. **Decision record audit.** Scan `ef-system/decisions/` and `projects/*/decisions/`:
    - Any CLAUDE.md rules without a corresponding decision file? Flag for documentation.

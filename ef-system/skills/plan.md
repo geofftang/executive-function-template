@@ -64,7 +64,7 @@ Claude reasons about the chosen approach freely (DO-CONFIRM), then scans this ch
 1. **Feedback loop?** — How will you know output is good? Design rubric/eval BEFORE building. If automating: explicit success criteria + rubric on 3-5 real examples first.
 2. **Solved problem?** — What would an expert check? Research first if safety-critical or architecture. Build first if creative or novel.
 3. **Right sequence?** — Upstream work that would make this easier? Do that first.
-4. **Autonomous?** — Could this run without the user? Workflow-first for fixed sequences; agent-needed for open-ended search or ambiguous state. (See AGENTIC-PATTERNS.md > Agent vs Workflow Decision.)
+4. **Autonomous?** — Could this run without the user? Workflow-first for fixed sequences; agent-needed for open-ended search or ambiguous state. (See AGENTIC-PATTERNS.md > Audit Check 5: Autonomous?)
 5. **Playing to strengths?** — Does the approach leverage cognitive strengths (exhaustive enumeration, systems optimization, cross-domain pattern transfer)? Structurally similar past problem?
 
 **Surface:** Anything Claude notices outside these checks — cross-project patterns, emotional blockers, unstated assumptions, a better framing that emerged.

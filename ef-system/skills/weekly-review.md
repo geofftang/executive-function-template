@@ -18,8 +18,6 @@
 
 ---
 
-#### PART B: PATTERN ANALYSIS
-
 #### PART B: DATA-DRIVEN PATTERN ANALYSIS
 **B1: NEGLECT ALERT**
 * **Action:** Scan dated entries in `This Week` in `ef-system/STATE.md` for the last 7 days. List any **Areas/Pillars** with zero activity.

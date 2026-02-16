@@ -1,5 +1,5 @@
 # INBOX TRIAGE
-**Schema Authority:** All state updates follow the STATE SCHEMA in `executive-function.md`.
+**Schema Authority:** All state updates follow the STATE schema defined in `ef-system/SYSTEM-STRUCTURE.md` and `ef-system/STATE.md`.
 **Sync Logic:** Use existing session state if "warm." If state is ambiguous or >1 hour old, read Obsidian `ef-system/STATE.md` before proceeding.
 
 **Purpose:** Process new/uncategorized tasks from inboxes (email, notes, head) into organized buckets. Run this during Mode A or anytime inboxes feel overwhelming.

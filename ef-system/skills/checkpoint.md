@@ -123,7 +123,6 @@ Save current session state and check alignment with plan. **This is the single c
 
 ## Notes
 - This does NOT end the session
-- `@work-logging` does full handoff + end-of-day summary
 - Checkpoints are insurance, not a requirement
 
 ## Git Strategy

@@ -27,6 +27,18 @@
 | [AREA_3] | [DATE] | |
 | [AREA_4] | [DATE] | |
 
+## This Week
+*(Daily activity log — entries added during @checkpoint and @morning-planning)*
+
+## Drift Watch
+*(Tracked during @weekly-review B2 — patterns of misalignment between goals and actual work)*
+
+## Constraint Watch
+*(Tracked during @weekly-review B2 — blockers, resource limits, external dependencies)*
+
+## Decision Watch
+*(Tracked during @weekly-review B2 — pending decisions that affect planning)*
+
 ## Reviews
 - **Weekly:** [DATE]
 - **Monthly:** [DATE]
