@@ -22,9 +22,13 @@ Problem-structuring, milestone-based workflow, and decision record pattern.
 - `ef-system/skills/system-audit.md` — Added architecture doc staleness check, decision record audit
 - `ef-system/BUILD-PLAN.md` — Added project sections structure, session log hygiene, BUILD-PLAN creation criteria. Cleaned up header and references
 - `ef-system/SYSTEM-STRUCTURE.md` — Added recommended {PROJECT}.md structure with Foundation section, ADR pattern (§3.2.1), task escalation logic, session log hygiene
+- `ef-system/skills/update-system.md` — **New file.** Backs `@update-system` command (reads CHANGELOG + `.template-config.md`, applies updates with substitution map)
+- `ef-system/skills/help.md` — Updated @plan description, added @update-system to periodic commands
+- `ef-system/skills/checkpoint.md` — Updated @plan quick-scan reference
+- `ef-system/reference/setup/README.md` — Fixed stale `CLAUDE-TEMPLATE.md` → `RULES-TEMPLATE.md`
 
 ### Manual merge (user-owned)
-- `RULES.md` — Skill table: `@new-project` renamed to `@project [create|complete]`. Reference docs table updated (HEARTBEAT removed, SYSTEM-STRUCTURE now mentions ADR pattern). `@update-template` renamed to `@update-system`
+- `RULES.md` — Skill table: `@new-project` renamed to `@project [create|complete]`, `@update-system` added. Reference docs table updated (HEARTBEAT removed, SYSTEM-STRUCTURE now mentions ADR pattern). `@plan` description updated to two-layer audit.
 
 ### Removed files
 - `ef-system/skills/new-project.md` — Replaced by `project.md` (users should delete old file)
