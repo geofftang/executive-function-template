@@ -23,7 +23,7 @@
 ```
 - Reads current task status from frontmatter
 - Asks: what's the new status? (pending → in_progress → done/blocked/cancelled)
-- Updates frontmatter (status, blocker if applicable, last_updated)
+- Updates frontmatter (status, blocker fields if applicable, last_updated)
 - Auto-routes task to correct section in {PROJECT}.md
 - Adds dated log entry to task file if significant transition
 
@@ -64,7 +64,7 @@
    - Add dated session log entry
 6. **Confirm what changed:**
    - "Updated tasks/auth-refactor (in_progress → done). Moved to Done section."
-   - Or: "Created tasks/schema-migration (blocked on rethinking approach). Moved to Operational."
+   - Or: "Created tasks/schema-migration (blocked on approach redesign). Stays in Focus."
    - Or: "Created tasks/metrics-collector + tasks/caching-research. Both pending. Added to Backlog."
 
 ---
@@ -80,7 +80,9 @@ status: pending | in_progress | blocked | done | cancelled
 priority: high | medium | low
 created: 2026-02-12
 last_updated: 2026-02-12
-blocker: "[blocker description]" (only if status: blocked)
+blocked_by: "[what is blocking this]" (only if status: blocked)
+next_unblock_action: "[next concrete action to unblock]" (only if status: blocked)
+check_date: "YYYY-MM-DD" (only if status: blocked)
 depends_on: ["parent-task-slug"] (optional, for subtasks)
 focus_level: high | medium | low (optional, signals Focus vs Operational)
 ---
@@ -100,7 +102,10 @@ focus_level: high | medium | low (optional, signals Focus vs Operational)
 [Discoveries during work on this task]
 
 ## Blocked On
-[If blocked: what's blocking? What would unblock?]
+[If blocked, record:]
+- blocked_by: [what is blocking this]
+- next_unblock_action: [next concrete action to unblock]
+- check_date: [YYYY-MM-DD review date]
 
 ## Next Steps
 [What's the next action?]
@@ -118,9 +123,9 @@ When status changes, @task auto-routes to the right section in {PROJECT}.md:
 
 | Status | {PROJECT}.md Section | Routing Rules |
 |--------|----------------------|---------------|
-| pending | Backlog | Default for new tasks |
-| in_progress | Focus | Actively being worked on NOW |
-| blocked | Operational | Waiting on blocker, unblock then resume |
+| pending | Backlog (by milestone) | Default for new tasks. Place under current milestone header. |
+| in_progress | Focus | Actively being worked on NOW. WIP=1 active (🔄). |
+| blocked | Focus (stays) | Mark with ⏸️ + blocker detail + check_date. Does NOT move to Operational. |
 | done | Done (callout) | Mark completed, archive if >1 week old |
 | cancelled | Done (callout) | Mark cancelled with reason |
 
@@ -173,7 +178,7 @@ When status changes, @task auto-routes to the right section in {PROJECT}.md:
    ```
    Processed work summary:
    ✅ Updated tasks/auth-refactor (in_progress → done). Moved to Done section.
-   ⏳ Created tasks/schema-migration (blocked on approach redesign). Added to Operational.
+   ⏸️ Updated tasks/schema-migration (blocked on approach redesign). Stays in Focus.
    📝 Appended findings to tasks/metrics-collector (in_progress).
    ```
 
@@ -194,7 +199,7 @@ When status changes, @task auto-routes to the right section in {PROJECT}.md:
    ```markdown
    - [ ] [[tasks/{slug}|{Task Name}]] (priority: {priority}) — {1-line description}
    ```
-6. **Confirm:** "Created tasks/{slug}.md and added to {PROJECT}.md Backlog"
+7. **Confirm:** "Created tasks/{slug}.md and added to {PROJECT}.md Backlog"
 
 ### @task update
 
@@ -206,21 +211,38 @@ When status changes, @task auto-routes to the right section in {PROJECT}.md:
    Transition to? (options: blocked, done, cancelled, back to pending)
    ```
 4. **If blocked:** ask "What's blocking this? (brief description)"
+   - Also ask:
+     - "What's the next unblock action?"
+     - "When should this be re-checked? (YYYY-MM-DD)"
 5. **If done/cancelled:** ask "Summary for Done section? (1 line)"
+   - **If done AND task involved a design choice** (methodology, architecture, tool selection, rejected alternatives): ask "Design decision to crystallize?" If yes, create a decision file in `{project}/decisions/` using the ADR template (see SYSTEM-STRUCTURE.md §3.2.1). This is how session-level reasoning survives past session log archival.
 6. **Update task file:**
    - Update `status:` in frontmatter
    - Update `last_updated:` to today
-   - Add blocker to frontmatter if blocked
+   - Add blocker fields to frontmatter if blocked:
+     - `blocked_by`
+     - `next_unblock_action`
+     - `check_date`
+   - Remove blocker fields when leaving `blocked` status
    - Append to Session Log: "**{DATE}:** Status: {old_status} → {new_status}. {Brief reason if provided}"
 7. **Update {PROJECT}.md:**
    - Remove entry from old section
-   - Add entry to new section
+   - Add entry to new section (blocked stays in Focus with ⏸️)
    - Format example:
      - **In Backlog:** `- [ ] [[tasks/slug|Name]] (priority: high)`
-     - **In Focus:** `- 🔄 [[tasks/slug|Name]] (in_progress, priority: high)`
-     - **In Operational:** `- ⏸️ [[tasks/slug|Name]] (blocked: waiting on X)`
-     - **In Done:** `- ✅ [[tasks/slug|Name]] (done 2026-02-12)`
-8. **Confirm:** "Updated tasks/{slug}.md — status {old} → {new}. Moved to {PROJECT}.md {section}"
+     - **In Focus (active):** `- [ ] 🔄 [[tasks/slug|Name]]`
+     - **In Focus (blocked):** `- [ ] ⏸️ [[tasks/slug|Name]] (blocked: waiting on X, check YYYY-MM-DD)`
+     - **In Done:** `- [x] [[tasks/slug|Name]] (done 2026-02-12)`
+8. **Focus refill (when status → done and item was in Focus):**
+   - Check current milestone's backlog for pending items
+   - If items exist: suggest "Pull [next item] to Focus?"
+   - If milestone backlog empty: check if milestone is complete → suggest advancing roadmap
+   - If all milestones done: suggest running `@project complete`
+9. **Operational refill (when status → done and item was in Operational):**
+   - Check Operational backlog for pending items
+   - If items exist: suggest next item. Lighter than Focus refill — no milestone logic.
+   - User decides — don't auto-promote
+10. **Confirm:** "Updated tasks/{slug}.md — status {old} → {new}. Moved to {PROJECT}.md {section}"
 
 ---
 
@@ -229,14 +251,17 @@ When status changes, @task auto-routes to the right section in {PROJECT}.md:
 ### Blocking a Task
 - User says "this is blocked on Y"
 - @task update interprets as transition to blocked
-- Adds blocker field: `blocker: "Waiting on task Y"`
+- Adds blocker fields:
+  - `blocked_by: "Waiting on task Y"`
+  - `next_unblock_action: "[specific next step]"`
+  - `check_date: "YYYY-MM-DD"`
 - Asks: should I update task Y's entry to mark it's blocking something?
 
 ### Unblocking a Task
 - User says "Y is done, unblock this"
 - @task update detects current status is blocked
 - Asks: move back to in_progress?
-- Removes blocker field, updates status, moves to Focus section
+- Removes blocker fields, updates status, moves to Focus section
 
 ### Task Dependencies
 - When creating task, ask: "Does this depend on another task?"
@@ -282,7 +307,7 @@ When status changes, @task auto-routes to the right section in {PROJECT}.md:
 - [ ] Task slug generated (lowercase, hyphens, unique)
 - [ ] Task file created with complete frontmatter
 - [ ] {PROJECT}.md updated with correct entry in target section
-- [ ] If blocked: blocker field added to frontmatter
+- [ ] If blocked: `blocked_by`, `next_unblock_action`, `check_date` added to frontmatter
 - [ ] If done/cancelled: entry moved to Done callout
 - [ ] Session log entry added if significant transition
 - [ ] User confirmed with task slug + section it moved to

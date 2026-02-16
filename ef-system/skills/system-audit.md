@@ -11,7 +11,7 @@ Called by `@weekly-review` (light mode) and `@strategic-reviews` monthly (full m
 Run when called from weekly review B3, or standalone without arguments.
 
 1. **Version Synchronization (HARD CHECK):** 
-   - Read `master_version` from `ef-system/AGENTIC-PATTERNS.md` and `ef-system/PROJECT-PATTERNS.md`.
+   - Read `master_version` from `ef-system/AGENTIC-PATTERNS.md` and `ef-system/SYSTEM-STRUCTURE.md`.
    - For each active project in `projects/`:
      - Read `pattern_version` from the project's `{PROJECT}.md`.
      - If `project_version < master_version` AND project is in "Focus" slot → **MANDATORY UPGRADE**. Propose specific edits to bring the project to current standard.
@@ -43,17 +43,28 @@ Everything in Light mode, plus:
    - Any compliance items that never get checked in practice?
    - Does it follow current conventions from the Tool Ecosystem table in CLAUDE.md?
 
-7. **Strengths lens pass.**
+7. **Architecture doc staleness.** For BUILD-PLAN.md and any project-level architecture docs:
+   - Do architecture descriptions match actual behavior?
+   - Do cross-references point to files that still exist?
+   - Any sections duplicating content that now lives in skills or SYSTEM-STRUCTURE.md?
+   - If stale → propose trim/update. Architecture docs should be the system map (how pieces connect), not duplicate operational detail.
+
+8. **Strengths lens pass.**
    - "Are we leveraging strengths or just compensating for weaknesses?" — check recent project designs, CLAUDE.md rules, skill changes
    - Chua's test: "Am I shipping faster than expected?" If yes, infrastructure investment is working. If no, it may be avoidance.
    - Any implicit abstraction transfers (formal methods applied cross-domain) that should be codified as system rules? (Reference: `ef-system/tasks/cognitive-strengths-mapping.md`)
 
-8. **Agentic lens pass.** Across all system files reviewed:
+9. **Decision record audit.** Scan `ef-system/decisions/` and `projects/*/decisions/`:
+   - Any CLAUDE.md rules without a corresponding decision file? Flag for documentation.
+   - Any decision files with `status: active` whose targets no longer exist? Flag for removal.
+   - Any decisions repeating across 2+ projects? Flag for AGENTIC-PATTERNS.md promotion.
+
+10. **Agentic lens pass.** Across all system files reviewed:
    - What's repeatable that could be encoded as a skill or script?
    - What's manual that could be automated?
    - Any pattern appearing in 3+ places that should be consolidated?
 
-9. **Output:** Grouped findings (stale, unenforced, duplicated, automation candidates). Each with a specific proposed edit. Present to user for approval before executing.
+11. **Output:** Grouped findings (stale, unenforced, duplicated, automation candidates). Each with a specific proposed edit. Present to user for approval before executing.
 
 ## Tag Convention
 

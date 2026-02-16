@@ -1,82 +1,114 @@
-# Skill: @plan (7-Point Agentic Audit)
+# Skill: @plan (Problem Quality + Agentic Audit)
 
 ## Purpose
-Quick sanity check before starting work. Catches missing feedback loops, automation opportunities, and sequencing errors. Run at task-level (fast) or project-level (thorough).
+Sanity check before starting work. Two layers: (1) problem quality — are we solving the right thing? (2) execution quality — are we building it right? Run at task-level (fast) or project-level (thorough).
 
 ## When to Use
 - Starting a meaningful task (not micro-tasks)
-- Invoked by: @morning-planning (per-task), @checkpoint (session review), @new-project (project-level)
+- Invoked by: @morning-planning (per-task), @checkpoint (session review), @project create (project-level)
 - Can also be called directly: @plan
 
 ## Execution
 
-Scan each point. Only surface findings worth acting on — skip where no action needed.
+Reason about the problem and approach freely. Then scan the checks below for blind spots. Surface anything worth acting on — whether it fits a check or not. (DO-CONFIRM pattern: think first, checklist catches gaps.)
 
-### Pre-Audit Gates (STOP if any trigger)
+### Gate: High-Stakes Check
 
-Before running the 7 checks, ask:
-
-**0a. Irreversible or high-stakes?** One-way door decision (hiring, termination, major spend, relationship, clinical judgment, policy change)?
+**Irreversible or high-stakes?** One-way door decision (hiring, termination, major spend, relationship, clinical judgment, policy change)?
 - → YES: Keep human in the loop. Automation catches edge cases, humans make the call.
-- → NO: Continue to 0b
-
-**0b. Frequency < 10/year or high variation?** One-off, novel, or varies significantly each time?
-- → YES: Improve human execution instead of automating. (Setup cost > payback with low frequency)
-- → NO: Continue to 0c
-
-**0c. Removing this task deskills the team/organization?** Does automating this remove critical learning, judgment practice, or decision visibility?
-- → YES: Keep human in the loop. Build tools that support judgment, not replace it.
-- → NO: Proceed to the 7 checks
-
-If all gates pass: You're automation-safe. Now audit for quality.
+- → NO: Proceed to Phase 1.
 
 ---
 
-### The 7 Checks
+### Phase 1: Problem Quality (What to solve)
 
-1. **Repeatable?** — Done before or will happen again? → Encode it (skill, script, template)
-2. **Feedback loop?** — How will you know output is good? → If none: design rubric/eval BEFORE building. (Research: 60-80% of agentic project time is evals; rubric-first saves rework)
-2.5. **Rubric written?** — If automating or agenting, do you have explicit success criteria + rubric on 3-5 real examples? → If no: design rubric first, test on knowns. This prevents evaluation-less systems.
-3. **External input?** — Solved problem? What would an expert check? → Research first (see AGENTIC-PATTERNS.md > When to Research)
-4. **Full function?** — Broader function this belongs to? Covering full scope or one slice? → Flag gaps
-5. **Autonomous?** — Could this run without the user? → **First: is this nondeterministic enough to need an agent?** (Most tasks don't. Workflows work better. See AGENTIC-PATTERNS.md > Agent vs Workflow Decision.) If yes to agent: which runtime? Parallel agents? (see AGENTIC-PATTERNS.md > Architectural Decisions)
-6. **Right sequence?** — Upstream work that would make this easier? → Do that first
-7. **Right person?** — AI tool, service, or delegation opportunity? → Delegate or skip
-8. **Playing to strengths?** — Does the approach leverage the user's cognitive strengths (exhaustive enumeration, systems optimization, cross-domain pattern transfer)? Have I solved a structurally similar problem before — what patterns transfer? (Reference: `ef-system/tasks/cognitive-strengths-mapping.md`)
+**Anti-anchoring protocol:** Before asking the user, Claude reads project context (history, decisions/, Foundation if it exists) and writes preliminary P1-P4 observations to a scratch file. Then Claude asks the user the structured questions. After the user answers, Claude reads back its pre-observations and explicitly surfaces disagreements: "You said X. Before asking, I'd noted Y because [evidence]. Worth considering?" Delete scratch file when done.
+
+**P1. Right problem?** (Wedell-Wedellsborg reframing)
+- State the problem in one sentence. Now: is that the real problem, or a symptom?
+- What category? (Technical / Process / Emotional / Incentive)
+- What's been tried before? (Claude checks project history and decisions/ first, presents findings)
+- If this were solved perfectly, what would actually change?
+- At task-level: one-line reframe check. At project-level: walk through each question.
+
+**P2. Objectives and scope clear?** (PrOACT)
+- What are you optimizing for? (Not "what does done look like" — what trade-offs matter?)
+- List objectives. Are any in conflict? Surface tension now.
+- Which objectives are must-haves vs nice-to-haves?
+- Does this cover the full function or just one slice? (Flag if building a piece without seeing the whole.)
+
+**P3. Alternatives on the table?** (PrOACT)
+- Have 3+ approaches been considered? If only one: you're anchored.
+- Claude proposes at least one contrarian alternative.
+- What's the do-nothing option? (Baseline — sometimes it wins.)
+
+**P4. Consequences and trade-offs mapped?** (PrOACT + Even Swaps)
+- For each alternative: what happens on each objective?
+- Eliminate dominated options (worse on everything).
+- For survivors: what's the key trade-off? Make it explicit.
+- Even Swaps shortcut: on the hardest trade-off, how much of objective A would you give up to equalize objective B?
+
+**→ Choose approach.** User picks. Record chosen approach + reasoning in Foundation (project-level) or proceed (task-level).
+
+---
+
+### Phase 2: Execution Quality (How to build the chosen approach)
+
+Claude reasons about the chosen approach freely (DO-CONFIRM), then scans this checklist for blind spots. Surface anything worth acting on.
+
+**Automation pre-check** (skip if not building/automating):
+- **Frequency < 10/year or high variation?** → Improve human execution instead of automating.
+- **Deskilling risk?** → Keep human in loop. Build tools that support judgment, not replace it.
+
+**Execution checks:**
+1. **Feedback loop?** — How will you know output is good? Design rubric/eval BEFORE building. If automating: explicit success criteria + rubric on 3-5 real examples first.
+2. **Solved problem?** — What would an expert check? Research first if safety-critical or architecture. Build first if creative or novel.
+3. **Right sequence?** — Upstream work that would make this easier? Do that first.
+4. **Autonomous?** — Could this run without the user? Workflow-first for fixed sequences; agent-needed for open-ended search or ambiguous state. (See AGENTIC-PATTERNS.md > Agent vs Workflow Decision.)
+5. **Playing to strengths?** — Does the approach leverage cognitive strengths (exhaustive enumeration, systems optimization, cross-domain pattern transfer)? Structurally similar past problem?
+
+**Surface:** Anything Claude notices outside these checks — cross-project patterns, emotional blockers, unstated assumptions, a better framing that emerged.
 
 ### Output
 
 Task-level (fast):
 ```
-@plan [task]: [#N] finding → action. [#N] finding → action. Clean on rest.
+@plan [task]: Problem: [clean | reframe]. Execution: [finding → action]. Clean on rest.
 ```
 
-Project-level (thorough — all 7 get explicit answers):
+Project-level (thorough):
 ```
 @plan [project]:
-1. Repeatable: [answer]
-2. Feedback loop: [answer]
-3. External input: [answer]
-4. Full function: [answer]
-5. Autonomous: [answer]
-6. Right sequence: [answer]
-7. Right person: [answer]
+Problem Quality:
+P1. Right problem: [answer]
+P2. Objectives: [answer]
+P3. Alternatives: [answer]
+P4. Trade-offs: [answer]
+Chosen approach: [answer]
+
+Execution Quality:
+1. Feedback loop: [answer]
+2. Solved problem: [answer]
+3. Right sequence: [answer]
+4. Autonomous: [answer]
+5. Playing to strengths: [answer]
+Surface: [emergent observations]
 ```
 
 If all clean: "@plan [task]: audit clean."
 
 ## Depth by Context
 
-| Caller | Depth | Time |
-|--------|-------|------|
-| Direct (@plan) | Full 7, thorough | As needed |
-| @morning-planning | Quick scan on day's primary task | <30s thinking |
-| @checkpoint | Audit lens on session work — flag one thing | One line |
-| @new-project | Full 7, all answers recorded in {PROJECT}.md | Part of inception |
+| Caller | Problem Quality | Execution Quality | Time |
+|--------|----------------|-------------------|------|
+| Direct (@plan) | Full P1-P4 with pre-registration | Full 5 + surface | As needed |
+| @morning-planning | P1 reframe check only | Quick scan | <30s thinking |
+| @checkpoint | Skip (work already in progress) | Flag one thing | One line |
+| @project create | Full P1-P4 with pre-registration, recorded in `{PROJECT}.md > Foundation` | Full 5 + surface, recorded | Part of inception |
 
-## When #5 Fires: Autonomous Execution
+## When Execution #4 Fires: Autonomous Execution
 
-When audit #5 identifies autonomous-safe work, first choose the execution architecture (see `AGENTIC-PATTERNS.md > Choosing an Execution Architecture`):
+When check #4 identifies autonomous-safe work, first choose the execution architecture:
 - **Single session** — work fits in one context window, simple
 - **Single session + judge** — fits in one session but quality matters (add eval pass)
 - **Ralph loop** — work exceeds one session, decomposable into units with test suite
@@ -90,9 +122,9 @@ If Ralph loop is the right architecture AND the user agrees, transition into spe
 4. **PROMPT.md** — Instructions each iteration receives: read spec → read implementation plan → pick highest-priority unchecked task → execute → verify (unit test for code, eval check for non-code) → mark complete → update progress file. Include repo structure and conventions (each iteration starts with fresh context).
 5. **Output the bash loop command** — User launches it themselves. Start with 10 iterations, scale up after reviewing results.
 
-For non-code work (research, analysis, content): use the two-pass pattern (builder + judge) documented in `AGENTIC-PATTERNS.md > Non-Code Quality Funnel`.
+For non-code work (research, analysis, content): use the two-pass pattern (builder + judge). Design rubric first, test on known examples, then execute.
 
-See `AGENTIC-PATTERNS.md > Ralph Loop` for the full pattern, failure modes, and bash template.
+Full pattern + bash template: `AGENTIC-PATTERNS.md > Ralph Loop` (load on demand, not every @plan scan).
 
 ## Reference
 - Full patterns: `ef-system/AGENTIC-PATTERNS.md`

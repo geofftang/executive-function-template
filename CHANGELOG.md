@@ -9,6 +9,28 @@ Each entry categorizes changes by update type:
 
 ---
 
+## 1.7.0
+
+Problem-structuring, milestone-based workflow, and decision record pattern.
+
+### Auto-update (template-owned)
+- `ef-system/skills/plan.md` — **Major restructure:** 7-point audit → two-layer (Problem Quality P1-P4 + Execution Quality). Adds DO-CONFIRM pattern, anti-anchoring protocol, PrOACT/Wedell-Wedellsborg frameworks
+- `ef-system/skills/task.md` — Enhanced blocker fields (blocked_by, next_unblock_action, check_date), focus refill logic, operational refill logic, ADR creation prompt on task completion, blocked items stay in Focus (not Operational)
+- `ef-system/skills/project.md` — **New file** replacing `new-project.md`. Now `@project [create|complete]` with create + complete modes, uses @plan for inception, milestone-based roadmap, design decision scan, project completion/distillation flow
+- `ef-system/skills/weekly-review.md` — Added C.6 Roadmap Hygiene, C.7 Assumption Check (references Foundation section). Updated state file references
+- `ef-system/skills/strategic-reviews.md` — Added design decision cross-pollination (monthly Step 2.7), quarterly pattern promotion. Updated state references
+- `ef-system/skills/system-audit.md` — Added architecture doc staleness check, decision record audit
+- `ef-system/BUILD-PLAN.md` — Added project sections structure, session log hygiene, BUILD-PLAN creation criteria. Cleaned up header and references
+- `ef-system/SYSTEM-STRUCTURE.md` — Added recommended {PROJECT}.md structure with Foundation section, ADR pattern (§3.2.1), task escalation logic, session log hygiene
+
+### Manual merge (user-owned)
+- `RULES.md` — Skill table: `@new-project` renamed to `@project [create|complete]`. Reference docs table updated (HEARTBEAT removed, SYSTEM-STRUCTURE now mentions ADR pattern). `@update-template` renamed to `@update-system`
+
+### Removed files
+- `ef-system/skills/new-project.md` — Replaced by `project.md` (users should delete old file)
+
+---
+
 ## 1.6.0
 
 Initial versioned release. Systems generated before this version have no `.template-config.md` — update protocol will need to build one from the user's existing files.

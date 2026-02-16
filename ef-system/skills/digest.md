@@ -112,13 +112,9 @@ After completing the deep read, load the {PROJECT}.md for each fundamental proje
 **Fundamental projects (always scan):**
 | Project | Project file | Cares about |
 |---------|------------|-------------|
-| EF system | `ef-system/EF-SYSTEM.md` + `BUILD-PLAN.md` | ADHD scaffolding, productivity, interventions, system design |
-| agentic-design | `projects/agentic-design/AGENTIC-DESIGN.md` | AI agent patterns, automation, agentic workflows |
-| income-lab | `projects/income-lab/INCOME-LAB.md` | Opportunities, market signals, AI leverage, freelancing |
-| therapy | `projects/therapy/THERAPY.md` | ADHD, OCD, anxiety, mental health techniques |
-| marketing | *(no project yet — cross-cutting knowledge)* | PMM, growth, attribution, crypto marketing, content strategy |
+| EF system | `ef-system/EF-SYSTEM.md` + `BUILD-PLAN.md` | Scaffolding, productivity, interventions, system design |
 
-**Known gap:** Cooking/food is a passion without a project. Flag food-related content but note there's nowhere to route it yet.
+Add your active projects here during setup. For each, note: project file path + what topics it cares about. This ensures @digest checks new content against your current work.
 
 If a match is found, add a `**Project relevance:**` line to the routing output naming the project and the specific connection.
 
@@ -286,9 +282,9 @@ Present results grouped by routing category, not by source.
 **Phase 1: Lightweight Capture (URL Input)**
 ```
 You: @digest https://paulgraham.com/startup
-Me: Fetch metadata, scaffold area → "Looks like livelihood?"
-    Create resources/[area]/example-article-on-startup.md (minimal file)
-    Return: "Added to resources/[area]/example-article-on-startup.md"
+Me: Fetch metadata, scaffold area → "Looks like [area]?"
+    Create resources/[area]/article-slug.md (minimal file)
+    Return: "Added to resources/[area]/article-slug.md"
 ```
 
 **Phase 2: Batch Digest (Later)**
@@ -313,7 +309,7 @@ Me: Read all .md files
 
 ## Notes
 
-- **Opportunity engine reference:** `projects/income-lab/opportunity-engine-v1.md` — use Part 1 (opportunity types), Part 4 (structural questions), and Part 7 (competition assessment) when evaluating signals.
+- **Opportunity signals:** If you have an opportunity evaluation framework in your projects, reference it when assessing signals. Otherwise, use the TYPE categories in the Signal format above.
 - **Never truncate quotes.** If a passage matters, quote it fully. Misquoting is worse than a long output.
 - **Teach, don't just inform.** The learning category exists because the user wants to build comprehension over time, not just get answers.
 

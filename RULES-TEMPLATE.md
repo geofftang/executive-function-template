@@ -15,7 +15,7 @@
 
 ## 3. Tool Commands
 - **@iterate:** Analyze friction in this thread (tempo, clarity, or rule failure). Propose ONE specific file edit to fix it.
-- **@update-template [user]:** Follow process in `projects/ef-template/template/CHANGELOG.md` — diff source vs template for unlogged changes, then apply updates to the named user's system.
+- **@update-system:** Update this system from the latest template. The template's SETUP-GUIDE Phase 4 walks through the process — reads CHANGELOG.md for what changed, reads `.template-config.md` for your substitution map.
 
 ## 4. Custom Skills (Protocols)
 
@@ -34,7 +34,7 @@
 | `@mem [action]` | universal memory operations (`search`, `stats`, `forget`, `export`, `prune`) |
 | `@plan` | 7-point agentic audit (task or project level) |
 | `@system-audit` | system refactoring review (light=weekly, full=monthly) |
-| `@new-project` | project inception + structure templates |
+| `@project [create\|complete]` | project lifecycle: inception (create) or archive (complete) |
 | `@task [action]` | task lifecycle: create new, update status (pending → in_progress → done/blocked/cancelled), auto-sync to {PROJECT}.md |
 | `@support` | Personalized cognitive/psychological scaffolding (breaking points, interventions) |
 | `@help` | List all available commands with descriptions |
@@ -45,9 +45,8 @@
 | Doc | Purpose |
 |-----|---------|
 | `ef-system/AGENTIC-PATTERNS.md` | Automation techniques, agentic design lens, eval design, research decision rules |
-| `ef-system/BUILD-PLAN.md` | Stable design: triage, chief of staff, data model, agent hierarchy, modularity contracts |
-| `ef-system/HEARTBEAT.md` | Operational: heartbeat check order, tier structure, triggers, constants |
-| `ef-system/SYSTEM-STRUCTURE.md` | Operational: navigation, dataview queries, write permissions, folder structure |
+| `ef-system/BUILD-PLAN.md` | Stable design: intervention patterns, execution design, session log hygiene |
+| `ef-system/SYSTEM-STRUCTURE.md` | Operational: navigation, folder structure, ADR pattern, project section templates |
 
 ## 5. Tool Ecosystem
 
@@ -181,7 +180,7 @@ See `SYSTEM-STRUCTURE.md` for full folder/file rules.
 
 ### Obsidian Querying Protocol
 When searching Obsidian, prioritize specificity:
-1. **If location is specified** (e.g., "in agentic-design or ef-system/tasks/"): Use `obsidian_list_files_in_dir()` first, then direct `Read()`. Only fall back to search if file is unknown.
+1. **If location is specified** (e.g., "in my-project or ef-system/tasks/"): Use `obsidian_list_files_in_dir()` first, then direct `Read()`. Only fall back to search if file is unknown.
 2. **If searching:** Use `obsidian_complex_search` with path glob filters (e.g., `{"glob": ["ef-system/tasks/*.md"]}`) instead of vault-wide `simple_search`.
 3. **Never vault-wide search** for narrowly-scoped queries. Example: user says "find my task about X" → check `projects/`, `ef-system/tasks/` first via list_files_in_dir, not simple_search across all projects.
 

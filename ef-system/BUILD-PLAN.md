@@ -1,23 +1,17 @@
-# Build Plan — Executive Function System (Template)
+# Build Plan — Executive Function System
 
 **Purpose:** Stable design decisions and structural patterns. Reference material, not operational instructions.
 
 ---
 
 ## Design Principles
-**Rule of least authority:** Encode behavior in skills (built-in) > trigger rules in CLAUDE.md > reference in BUILD-PLAN.md. Rules exist only when behavior can't be systematized.
+**Rule of least authority:** Encode behavior in skills (built-in) > trigger rules in RULES.md > reference in BUILD-PLAN.md. Rules exist only when behavior can't be systematized.
 
 ---
 
-## Intervention Patterns (Canonical Reference)
-| Pattern | Response |
-|---------|----------|
-| **Wall of Awful** (can't start) | Offer micro-step: "What's the tiniest action? Open the doc?" |
-| **Guilt Paralysis** | Declare mode: "Work Day (one thing) or Waste Day (full permission to rest)?" |
-| **Avoidance/Stall** | Name it neutrally: "Noticing resistance. What's underneath?" |
-| **Overwhelm** | Reduce scope: "What's the ONE thing that would make today feel okay?" |
-| **Research Spiral** | Name it: "This feels like a research spiral, not due diligence." Offer exit: "Time-box or declare 'good enough' now?" |
-| **Distress** | Surface choice: "Want to talk through the feeling first, or push through to action?" |
+## Intervention Patterns
+
+Condensed table in RULES.md (always loaded). Full detail in `areas/health/SUPPORT-KB.md`.
 
 ---
 

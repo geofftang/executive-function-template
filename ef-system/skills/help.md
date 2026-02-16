@@ -18,7 +18,7 @@
 | Command | What it does |
 |---------|-------------|
 | `@plan` | Audit a task or project before starting (7-point check) |
-| `@new-project` | Scaffold a new project with proper structure |
+| `@project [create\|complete]` | Project lifecycle: inception (create) or archive (complete) |
 | `@digest [input]` | Process an article, email, or content — extract key points |
 | `@inbox-triage` | Process all inboxes (email, captures, drafts) |
 | `@support` | Get help when stuck, overwhelmed, or spiraling |

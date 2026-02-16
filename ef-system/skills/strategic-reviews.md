@@ -30,7 +30,7 @@
 
 ### **Step 3: Pillar starvation check (3 min)**
 * **Action:** Review pillar activity across last 4 weeks
-* **Check:** Compare `quarterly_current` priorities against actual pillar touches
+* **Check:** Compare active quarter priorities in `ef-system/STATE.md` against actual pillar touches
 * **Report:** "Creative was quarterly priority but got 0 touches all month"
 * **Decision point:** 
   - Keep as quarterly priority → Add explicit weekly goals next 4 weeks
@@ -40,13 +40,13 @@
 ### **Step 4: Horizon scan (2 min)**
 * **Prompt:** "Any deadline 30-60 days out that triggers GAD if not broken down today?"
 * **Examples:** Insurance renewal, tax dates, major life transitions
-* **Action:** Add to recurring task tool for weekly reminders (T-30, T-14, T-7 days)
+* **Action:** Add to [task app] recurring for weekly reminders (T-30, T-14, T-7 days)
 * **Why:** Prevents surprise crisis mode
 
 ### **Output:**
 * Adjustments to next 4 weekly goals only
-* No new state in Obsidian `ef-system/STATE.md`
-* Update `last_monthly_check` to today's date
+* No new state outside the current `ef-system/STATE.md` schema
+* Update `Reviews > Monthly` to today's date
 
 ---
 
@@ -88,7 +88,7 @@ Pillar Summary:
 
 **Step 2: Quarterly goal audit (5 min)**
 
-* **Action:** Review `quarterly_current` from Obsidian `ef-system/STATE.md`
+* **Action:** Review quarter priorities from `ef-system/STATE.md` (current quarter section)
 * **For each pillar priority, report:**
   - What was the stated goal?
   - How many weeks did it get explicit attention?
@@ -103,7 +103,7 @@ Pillar Summary:
 
 **Step 1: Check annual alignment (5 min)**
 
-* **Action:** Review `annual_[YEAR].identity_statement` from Obsidian `ef-system/STATE.md`
+* **Action:** Review annual direction from `ef-system/STATE.md` (current year section)
 * **Prompt:** "Does this still feel true, or has something shifted?"
 * **If shifted:** Update identity statement (rare, but allowed)
   - Example: "From job-seeking to sustainably employed" might shift mid-year if you get a job
@@ -165,27 +165,19 @@ Pillar Summary:
 
 * **Why:** Prevents knowledge from getting lost when projects end; reusable learning stays accessible across projects
 
+* **Design Decision pattern promotion:** Scan `*/decisions/` folders — if a decision repeats across 2+ projects → candidate for AGENTIC-PATTERNS.md promotion.
+
 ---
 
 ### **PART D: ARCHIVE AND RESET (5 min)**
 
 **Action - I will:**
 
-1. **Update Obsidian `ef-system/STATE.md`:**
-```json
-"quarterly_current": {
-  "quarter": "Q2_[YEAR]",
-  "livelihood": "Primary - Transition into new role successfully",
-  "[pillar_2]": "Primary - Maintain daily habits + exercise baseline",
-  "creative": "Maintenance - Threshold only",
-  "fun_social": "Maintenance - Threshold only"
-}
-```
+1. **Update `ef-system/STATE.md`:**
+   - Refresh current quarter section with primary vs maintenance priorities.
 
 2. **Update timestamp:**
-```json
-"last_quarterly_review": "[YEAR]-04-02"
-```
+   - Set `Reviews > Quarterly` to today.
 
 3. **Set first week's goals** based on quarterly priorities:
    - Inform Mode D Part C with quarterly context

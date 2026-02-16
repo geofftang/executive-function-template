@@ -31,7 +31,7 @@ Type `@help` anytime to see all available commands. Here are the essentials:
 
 **When you need them:**
 - `@plan` — Audit a task before starting (catches gaps, estimates friction)
-- `@new-project` — Set up a new project with proper structure
+- `@project [create|complete]` — Project lifecycle: inception (create) or archive (complete)
 - `@digest [url or text]` — Process an article, email, or content
 - `@support` — Get help when stuck, overwhelmed, or spiraling
 
