@@ -1,5 +1,5 @@
 # WEEKLY REVIEW
-**Sync Logic:** Read Obsidian `ef-system/STATE.md` immediately upon loading (via MCP or filesystem).
+**Sync Logic:** Read `ef-system/STATE.md` immediately upon loading.
 **Schema Authority:** All state updates follow the STATE schema defined in `ef-system/SYSTEM-STRUCTURE.md` and `ef-system/STATE.md`.
 **Database Role:** You are the Database Administrator. Do not hallucinate keys.
 

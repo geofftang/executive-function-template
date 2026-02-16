@@ -53,7 +53,7 @@
 
 | Purpose | Tool | Access |
 |---------|------|--------|
-| Tasks/Projects | [notes app] | `projects/` folder via MCP or filesystem |
+| Tasks/Projects | [notes app] | `projects/` folder via filesystem |
 | State | [notes app] | `ef-system/STATE.md` |
 | Session memory | claude-mem | Shared brain in `~/.claude-mem/claude-mem.db`. Use `@mem` (see `ef-system/skills/mem.md`). |
 | Recurring (weekly+) | [task app] | [configured during setup] |
@@ -177,13 +177,10 @@ See `SYSTEM-STRUCTURE.md` for full folder/file rules.
 - `<!-- WORKAROUND: [description] | CHECK: [upstream fix condition] -->` — upstream bugs/limitations
 - `<!-- REVISIT: [why this might change] | WHEN: [condition or timeframe] -->` — experimental, iterating, or intentionally temporary
 
-### Obsidian Querying Protocol
-When searching Obsidian, prioritize specificity:
-1. **If location is specified** (e.g., "in my-project or ef-system/tasks/"): Use `obsidian_list_files_in_dir()` first, then direct `Read()`. Only fall back to search if file is unknown.
-2. **If searching:** Use `obsidian_complex_search` with path glob filters (e.g., `{"glob": ["ef-system/tasks/*.md"]}`) instead of vault-wide `simple_search`.
-3. **Never vault-wide search** for narrowly-scoped queries. Example: user says "find my task about X" → check `projects/`, `ef-system/tasks/` first via list_files_in_dir, not simple_search across all projects.
+### Vault Access Protocol
+Use filesystem tools (Read, Edit, Write, Glob, Grep) for all vault operations. Notes apps like Obsidian store plain markdown files — Claude Code accesses them directly via the filesystem. No MCP needed for file access.
 
-This prevents irrelevant bulk results and respects token budget.
+**Note:** If your tool ecosystem uses MCP servers (e.g., for task managers, calendars, capture apps), configure those in `.claude/settings.json`. MCPs are for tools with APIs that aren't file-based — not for reading/writing markdown files that are already on disk.
 
 ## 8. Communication Style
 - **Strict Brevity:** Zero preamble. Max 3 sentences unless complexity demands more.
