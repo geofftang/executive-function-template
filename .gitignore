@@ -1,2 +1,7 @@
 # User-specific (saved during setup, not shared)
 .last-output
+
+# Development-only (template maintainer's project hub, not for end users)
+EXECUTIVE-FUNCTION-TEMPLATE.md
+decisions/
+tasks/

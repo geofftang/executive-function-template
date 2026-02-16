@@ -152,7 +152,7 @@ Save current session state and check alignment with plan. **This is the single c
 - [ ] If new project added to EF-SYSTEM.md active list, insert at correct priority position (list is priority-ordered)
 - [ ] Git commit of state files completed
 - [ ] Alignment check performed (planned vs actual noted)
-- [ ] @plan audit (session depth): scan session work through the 7-point lens, flag one finding. If nothing actionable, note "audit clean." (See `ef-system/skills/plan.md`)
+- [ ] @plan quick-scan on session's primary work (flag one finding if applicable)
 
 ## Session Context Preservation
 

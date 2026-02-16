@@ -15,7 +15,7 @@
 
 ## 3. Tool Commands
 - **@iterate:** Analyze friction in this thread (tempo, clarity, or rule failure). Propose ONE specific file edit to fix it.
-- **@update-system:** Update this system from the latest template. The template's SETUP-GUIDE Phase 4 walks through the process — reads CHANGELOG.md for what changed, reads `.template-config.md` for your substitution map.
+- **@update-system:** Update this system from the latest template. Reads CHANGELOG.md + `.template-config.md`. See `ef-system/skills/update-system.md`.
 
 ## 4. Custom Skills (Protocols)
 
@@ -32,11 +32,12 @@
 | `@strategic-reviews` | quarterly/annual reviews |
 | `@digest [input]` | deep read + route (articles, newsletters, any content). Modes: `@digest capture` for lightweight intake, or `@digest [url/file/text]` for full analysis |
 | `@mem [action]` | universal memory operations (`search`, `stats`, `forget`, `export`, `prune`) |
-| `@plan` | 7-point agentic audit (task or project level) |
+| `@plan` | two-layer audit: problem quality (P1-P4) + execution quality (task or project level) |
 | `@system-audit` | system refactoring review (light=weekly, full=monthly) |
 | `@project [create\|complete]` | project lifecycle: inception (create) or archive (complete) |
 | `@task [action]` | task lifecycle: create new, update status (pending → in_progress → done/blocked/cancelled), auto-sync to {PROJECT}.md |
 | `@support` | Personalized cognitive/psychological scaffolding (breaking points, interventions) |
+| `@update-system` | update this system from latest template (reads CHANGELOG + .template-config.md) |
 | `@help` | List all available commands with descriptions |
 
 | `@new-task` | DEPRECATED — use `@task create` instead |

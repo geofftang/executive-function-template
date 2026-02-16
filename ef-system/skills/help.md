@@ -17,7 +17,7 @@
 **As-needed:**
 | Command | What it does |
 |---------|-------------|
-| `@plan` | Audit a task or project before starting (7-point check) |
+| `@plan` | Audit a task or project before starting (problem quality + execution quality) |
 | `@project [create\|complete]` | Project lifecycle: inception (create) or archive (complete) |
 | `@digest [input]` | Process an article, email, or content — extract key points |
 | `@inbox-triage` | Process all inboxes (email, captures, drafts) |
@@ -29,6 +29,7 @@
 | `@weekly-review` | Weekly reflection + next-week planning |
 | `@strategic-reviews` | Quarterly/annual reviews |
 | `@system-audit` | Check if the system itself needs tuning |
+| `@update-system` | Apply template updates to your system |
 
 **Utility:**
 | Command | What it does |
