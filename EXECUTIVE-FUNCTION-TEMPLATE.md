@@ -43,12 +43,7 @@ created: 2026-02-14
 > - Test with a real non-ADHD user to validate value-neutrality claims.
 
 ## Design Decisions
-- SFBT + MI over pure CBT for interview: future-focused framing avoids deficit narrative for neurodivergent users. SFBT "good day" question captures aspirations without requiring problem identification first. MI scaling ("why not lower?") elicits change talk without confrontation. (Clinical lit review + Gemini/Codex cross-validation)
-- Clinical formulation model (8-section YAML) over checklist: captures interaction between conditions, not just symptoms. Enables LLM to generate contextual interventions. (Codex flagged complexity concern — retained because GPT-5.3/Claude/Gemini all handle structured YAML)
-- FBA for failure modes over self-report: antecedent→behavior→consequence→function pattern produces actionable intervention targets, not just labels. Function hypothesis marked as "working hypothesis" per Codex feedback.
-- One-time skill adaptation at setup, not runtime profile re-read: profile rarely changes, reduces per-invocation complexity. Deeper adaptation deferred until real user data exists.
-- Archetype labels value-neutral: "career-focused" not "workaholic", "experience-focused" not "present-oriented". Internal LLM labels still affect formulation. (Codex review)
-- LLM-agnostic via shim chain: RULES.md holds all logic, CLAUDE.md/GEMINI.md/AGENTS.md are one-line redirects. Tested with Claude, Gemini CLI, Codex CLI.
+See [[decisions/]] folder — each decision is an individual ADR file with problem, rationale, alternatives, and evidence.
 
 ## Done
 
