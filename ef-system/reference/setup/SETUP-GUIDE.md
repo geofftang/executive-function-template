@@ -460,13 +460,17 @@ Copy these files from the template to `[OUTPUT_DIR]/` unchanged (they're already
 - `ef-system/EF-SYSTEM.md`
 - `ef-system/BUILD-PLAN.md`
 - `ef-system/AGENTIC-PATTERNS.md`
-- `ef-system/skills/` — all skill files (will be customized in Step 6)
+- `ef-system/skills/` — **ALL 14 skill files** (will be customized in Step 6)
 - `ef-system/reference/` — all reference docs **except** `reference/setup/` (setup-only, stays in template)
 - `ef-system/tasks/README.md`
 - `ef-system/history/README.md`
 - `projects/README.md`
 - `resources/README.md`
 - `areas/health/SUPPORT-KB.md`
+
+**Verification (HARD CHECK):** After copying, confirm all 14 skill files exist in `[OUTPUT_DIR]/ef-system/skills/`:
+`checkpoint.md`, `digest.md`, `help.md`, `inbox-triage.md`, `mem.md`, `morning-planning.md`, `plan.md`, `project.md`, `strategic-reviews.md`, `support.md`, `system-audit.md`, `task.md`, `update-system.md`, `weekly-review.md`.
+If any are missing, copy them now before proceeding. All skills ship from day one — there is no selective installation.
 
 ### Step 1: Placeholder Substitution Map
 
@@ -682,46 +686,55 @@ This gives the user version history from day one — they can track changes, rev
 
 ### Step 11: Verify and hand off
 
-1. Verify the output directory has: `RULES.md`, LLM shims (`CLAUDE.md`, `GEMINI.md`, `AGENTS.md`), `ef-system/` (with STATE.md, skills/, reference/, .template-config.md), `projects/`, `resources/`
-2. Tell the user: "Your system is ready at `[OUTPUT_DIR]`. Open your AI coding tool there for daily use — it will auto-load your instructions via the shim files. This template directory stays for future updates — you can `git pull` anytime."
-3. The system is live. First session starts with `@morning-planning`.
+**System integrity check (MANDATORY — do not skip):**
+
+1. **Skill files on disk:** Confirm all 14 files exist in `[OUTPUT_DIR]/ef-system/skills/`. List them and compare against the expected set.
+2. **RULES.md skill table:** Every skill file must have a corresponding row in the skill table. Diff the table against the files — add any missing rows.
+3. **Placeholder substitution:** Grep all files in `[OUTPUT_DIR]/` for unsubstituted tokens (`[AREA_`, `[PILLAR_`, `[USER_HOME]`, `[area-`, `[pillar_`). Fix any found.
+4. **Cross-references:** Verify these files exist and are referenced correctly:
+   - `ef-system/AGENTIC-PATTERNS.md` (referenced by @plan)
+   - `ef-system/SYSTEM-STRUCTURE.md` (referenced by @project, @task)
+   - `ef-system/BUILD-PLAN.md` (referenced by RULES.md)
+   - `areas/health/SUPPORT-KB.md` (referenced by @support)
+5. **STATE.md sections:** Confirm these sections exist: Intention, Completed, Context, This Week, Execution Adherence, Drift Watch, Constraint Watch.
+6. **Support customization:** Verify @support and SUPPORT-KB.md reflect the user's patterns from the interview (Q5 failure modes, Q6 communication style), not generic template content.
+7. **Directory structure:** Confirm `RULES.md`, LLM shims (`CLAUDE.md`, `GEMINI.md`, `AGENTS.md`), `ef-system/` (with STATE.md, skills/, reference/, .template-config.md), `projects/`, `resources/` all exist.
+
+**If any check fails, fix it now before handing off.** Report what was checked and the result.
+
+8. Tell the user: "Your system is ready at `[OUTPUT_DIR]`. Open your AI coding tool there for daily use — it will auto-load your instructions via the shim files. This template directory stays for future updates — you can `git pull` anytime."
+9. The system is live. First session starts with `@morning-planning`.
 
 ---
 
 ## Phase 3: First Week Protocol
 
+**All 14 skills are wired from day one.** There is no gradual rollout — skills either fire automatically through other skills (e.g., @checkpoint calls @task, @project calls @plan) or the user invokes them directly. `@help` is the discovery mechanism.
+
 **Week 1 goals are pre-seeded in STATE.md.** Morning planning will surface `@project create` goals from Step 5. Each `@project create` runs `@plan` to build a proper Foundation — this is intentional, not optional. But one project at a time, at the user's pace.
 
-**Calibrate pace from Q5 (support level):**
+### Day 1 Walkthrough
 
-### If Full EF Scaffolding
-User has significant executive function challenges. Gradual rollout, but not glacial.
+Walk the user through their first morning planning session live. Mention:
 
-**Day 1:** Morning planning + checkpoint. Walk through both live.
-**Day 3:** Add inbox triage (if they have email/capture tools).
-**End of week 1:** Weekly review.
-**Week 2+:** Add remaining skills as specific friction emerges.
+1. **The core loop:** `@morning-planning` → do work → `@checkpoint` when done or stepping away.
+2. **Projects:** When you're ready to start a project, `@project create` guides you through it (it runs `@plan` automatically).
+3. **Support:** "If you're ever stuck, overwhelmed, or spiraling, type `@support`."
+4. **Discovery:** "Type `@help` anytime to see all available commands."
 
-### If Moderate Support
-User has some challenges but is generally functional. Faster rollout.
+That's it for day 1. Don't enumerate all 14 skills — the user learns them by using them.
 
-**Day 1:** Morning planning + checkpoint + inbox triage. Walk through each once.
-**End of week 1:** Weekly review.
-**Week 2:** All skills available, introduce as relevant.
+### End of Week 1
 
-### If Organizational Only
-User mainly needs structure, not scaffolding. Everything available immediately.
+Run `@weekly-review`. This is the first full-cycle close.
 
-**Day 1:** Walk through all core skills (morning planning, checkpoint, inbox triage, weekly review). User picks which to adopt.
-**Week 1:** Full system available. Adjust based on what sticks.
+### Calibrate depth from Q5 (support level)
 
-### For all levels — add on demand:
-- **Want deeper content processing?** -> `@digest`
-- **Need longer-horizon planning?** -> `@strategic-reviews`
-- **Need structured task tracking?** -> `@task`
-- **Need emotional/cognitive support?** -> `@support`
+The walkthrough is the same for all levels. What changes is how much the system does autonomously:
 
-**Key message:** "Everything is available. Start with the core loop (plan -> do -> checkpoint -> review) and add the rest when you feel specific friction."
+- **Full EF Scaffolding:** Skills run with maximum scaffolding (micro-steps, shame-free framing, area-balance nudges). All intervention patterns active.
+- **Moderate Support:** Standard skill behavior. Intervention patterns active but lighter touch.
+- **Organizational Only:** Skills run lean — skip intervention patterns, skip emotional scaffolding, focus on structure and tracking.
 
 ---
 
