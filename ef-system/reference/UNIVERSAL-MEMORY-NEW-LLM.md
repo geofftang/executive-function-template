@@ -8,7 +8,7 @@ Find the session log location for the new agent.
 - **Verification:** Ensure the file is updated after every turn or session end.
 
 ## 2. Bridge Registration
-Update `ef-system/scripts/memory/universal-memory-bridge.js`.
+Update `execution/scripts/memory/universal-memory-bridge.js`.
 1. **Define Root:** `const NEW_AGENT_LOG_ROOT = path.join(process.env.HOME, ".new-agent/logs");`
 2. **Add to Watcher:** `watcher.add(NEW_AGENT_LOG_ROOT);`
 3. **Add Parser:** Add a conditional block in the `watcher.on('change')` event to handle the specific JSON/JSONL format of the new agent.
