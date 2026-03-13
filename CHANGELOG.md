@@ -9,6 +9,97 @@ Each entry categorizes changes by update type:
 
 ---
 
+## 2.1.0
+
+**Hooks layer + skill renames.** Mechanical behavioral enforcement via Claude Code hooks. Compaction survival (precompact-save + compact-restore) preserves session context across auto-compaction. Safety hook blocks destructive commands.
+
+### Auto-update (template-owned)
+- `RULES-TEMPLATE.md` — Added Hooks section (§6 Core Rules), updated Rule of least authority to include hooks tier, fixed `resume` → `continue` in ADHD Interrupt Protocol
+- `execution/skills/plan/SKILL.md` — Added "Enforcement check" to Phase 2 (hooks consideration for behavioral rules)
+- `execution/skills/strategic-reviews/SKILL.md` — Improved description
+- `execution/skills/weekly-review/SKILL.md` — Improved description
+- `execution/skills/update-system/SKILL.md` — Improved description
+- `execution/skills/project/SKILL.md` — Improved description
+- `execution/agentic-patterns.md` — Ralph Loop section expanded (bash loop vs stop hook architectures)
+- `setup-skills.sh` / `setup-skills.ps1` — Now also links hooks and generates `settings.local.json` with hook registrations
+
+### New files
+- `execution/hooks/block-dangerous.sh` — PreToolUse(Bash): blocks `rm`, force push, `git reset --hard`
+- `execution/hooks/precompact-save.py` — PreCompact: saves session survival kit before auto-compaction
+- `execution/hooks/compact-restore.sh` — SessionStart(compact): injects survival kit as context after compaction
+
+### Skill renames
+- `resume` → `continue` (aligns with behavioral trigger: "returning to stalled work")
+
+### Manual merge (user-owned)
+- `RULES.md` — Add Hooks section to Core Rules. Update ADHD Interrupt Protocol: `resume` → `continue`. Update Rule of least authority to include hooks tier.
+
+---
+
+## 2.0.0
+
+**Major structural migration.** Monolithic `ef-system/` split into `identity/` + `execution/` + `state/`. Skills moved to Agent Skills folder format with YAML frontmatter for cross-model auto-triggering.
+
+### Breaking changes (v1.x → v2.0 migration required)
+- `ef-system/` directory restructured — see Phase 4b in SETUP-GUIDE for migration path
+- Skills moved from flat files (`ef-system/skills/name.md`) to folders (`execution/skills/name/SKILL.md`)
+- `USER-PROFILE.md` split into three identity files
+- `SUPPORT-KB.md` merged into `identity/behaviors.md`
+- Skill renames: `morning-planning` → `daily`, `inbox-triage` → `triage`
+
+### New structure
+```
+identity/           ← profile.md, behaviors.md, user-manual.md
+execution/          ← skills/, reference/, agentic-patterns.md, system-structure.md
+state/              ← STATE.md, history/
+projects/ef-system/ ← ef-system.md, tasks/, decisions/
+```
+
+### Auto-update (template-owned)
+- `RULES-TEMPLATE.md` — Complete rewrite: Agent Skills discovery (Section 2), ADHD Interrupt Protocol, new file structure (Section 3.5), Agentic Principles (Section 5), updated execution support rules (capture-then-defer, spiral check, deliverable gate, section-by-section pacing)
+- All skills — Migrated to folder format with YAML frontmatter (`name`, `description`, `disable-model-invocation`)
+- `execution/skills/plan/SKILL.md` — Major rewrite: mental models check, anti-anchoring gate with scratch file, "good enough" gate, assumption declaration, REASON-CONFIRM pattern, state propagation, action routing gate, success criteria block
+- `execution/skills/digest/SKILL.md` — Major rewrite: three-gate capture filter, content-type detection (thesis/roundup/forum), relevance scan, forum protocol, cross-domain connections
+- `execution/skills/checkpoint/SKILL.md` — Ported live improvements (trimmed, sharper)
+- `execution/skills/strategic-reviews/SKILL.md` — Ported live improvements, generalized
+- `execution/skills/weekly-review/SKILL.md` — Ported live improvements
+- `execution/skills/task/SKILL.md` — Ported live improvements
+- `execution/skills/system-audit/SKILL.md` — Ported live improvements
+- `execution/skills/help/SKILL.md` — Updated skill names and groupings
+- `execution/skills/update-system/SKILL.md` — Updated paths, added v1.x→v2.0 migration detection
+- `execution/agentic-patterns.md` — Updated path references
+- `execution/system-structure.md` — Updated path references
+- `execution/reference/BUILD-PLAN.md` — Updated path references
+- `execution/reference/GETTING-TO-BASELINE.md` — Updated to new structure
+- `execution/reference/USER-MANUAL.md` — Updated skill references
+- `execution/reference/UNIVERSAL-MEMORY-NEW-LLM.md` — Updated path references
+- `execution/reference/setup/README.md` — Complete rewrite for new structure
+- `execution/reference/setup/STATE-TEMPLATE.md` — Updated skill references
+
+### New files
+- `identity/profile.md` — User profile template (WOOP, energy map, conditions, privacy)
+- `identity/behaviors.md` — Failure modes (FBA structure), success modes, protective factors, support protocols
+- `identity/user-manual.md` — Communication style, automation tolerance, hard rules, cognitive traits
+- `execution/skills/interrupt/SKILL.md` — Active state break for hyperfocus/rumination
+- `execution/skills/continue/SKILL.md` — Context reload after interruption or cold-start (renamed to `continue` in 2.1.0)
+- `execution/skills/pregame/SKILL.md` — Social event preparation
+- `setup-skills.sh` / `setup-skills.ps1` — Symlink creation for cross-model skill discovery
+
+### Manual merge (user-owned)
+- `RULES.md` — Extensive changes. Section 2 replaces skill table with Agent Skills discovery + ADHD Interrupt Protocol. Section 3.5 adds new file structure. Section 5 adds Agentic Principles. Section 4 adds new execution support rules. All `ef-system/` paths updated.
+- For v1.x users: Run Phase 4b migration in SETUP-GUIDE — it reads old files and restructures without re-interviewing
+
+### Migration guide (v1.x → v2.0)
+1. Update template: `git pull` (or receive new files)
+2. Run `@update-system` — it detects v1.x and triggers Phase 4b migration
+3. Phase 4b reads `USER-PROFILE.md` + `SUPPORT-KB.md` → creates `identity/` files
+4. Skills migrated from flat files to folder format
+5. Infrastructure files moved to new locations
+6. RULES.md updated with new structure
+7. Old `ef-system/` files flagged for manual cleanup
+
+---
+
 ## 1.7.1
 
 Vault access: filesystem-only, no Obsidian MCP dependency.
