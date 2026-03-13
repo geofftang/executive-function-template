@@ -126,6 +126,20 @@ If the changelog lists removed files:
 - Tell the user which files to delete (don't delete automatically)
 - Example: "v1.7.0 removed `execution/skills/new-project.md` (replaced by `project.md`). Safe to delete."
 
+## Personalize Mode
+
+**Trigger:** User says `@update-system personalize`, or the system detects `identity/profile.md` was modified more recently than `identity/adaptations.md`.
+
+**Execution:** Run the same personalization flow as SETUP-GUIDE Step 6.5:
+1. Read identity/ files
+2. Research evidence-based interventions for this user's patterns
+3. Propose adaptations section by section with rationale
+4. User approves each category
+5. Write/update `identity/adaptations.md`
+6. Apply changes to RULES.md and skill trigger descriptions
+
+**If adaptations.md already exists:** Read it first to understand what's already personalized. Only propose changes for patterns that are new or have changed. Don't re-propose existing adaptations unless the user asks for a full re-personalization.
+
 ## Edge Cases
 
 **User has fewer areas/pillars than placeholders:**

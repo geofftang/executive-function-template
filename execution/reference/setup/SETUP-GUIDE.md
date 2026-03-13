@@ -618,6 +618,45 @@ For each skill SKILL.md already in the output directory, apply placeholder subst
 
 Then introduce `@daily` first — walk them through a first morning planning session right now. This is how they learn the system.
 
+### Step 6.5: Personalization (Identity-Driven Adaptation)
+
+Now that identity files exist, adapt the system to the user's specific cognitive profile.
+
+**Run `@plan` in personalization mode:**
+
+1. **Read** `identity/profile.md` and `identity/behaviors.md` — identify conditions, failure modes, cognitive patterns, and communication needs.
+2. **Research** evidence-based interventions for the patterns found. Don't rely on training data alone — search for clinical evidence, established frameworks, and published protocols. The quality of personalization depends on the research quality.
+3. **Propose** adaptations section by section, with rationale:
+   - **RULES.md §4 Interventions:** Add condition-specific interventions (e.g., OCD spiral detection, ADHD task activation scaffolding, anxiety evidence-grounding). Explain each: what pattern it addresses, what the intervention does, clinical basis.
+   - **RULES.md §4 Communication adjustments:** Add condition-specific communication rules (e.g., "never ask 'how do you feel?' if user has alexithymia" or "don't solve rigidity with more rules for OCPD").
+   - **Skill trigger descriptions:** Propose implicit trigger modifications for relevant skills (e.g., adding time-loss detection to `@interrupt`, adding catastrophizing detection to `@therapy`).
+4. **User approves** each category before applying. Section-by-section — don't batch everything.
+5. **Write `identity/adaptations.md`** tracking all changes made:
+
+```markdown
+# Adaptations
+Generated: [date] | Based on: identity/profile.md
+Personalized by: @plan | Approved by: [user]
+
+## Interventions (added to RULES.md §4)
+- [intervention]: [what pattern] → [what action]. Basis: [source].
+...
+
+## Communication Adjustments (added to RULES.md §4)
+- [condition]: [rule]. Basis: [source].
+...
+
+## Skill Trigger Modifications
+- [skill]: [what was added to implicit triggers]. Reason: [pattern].
+...
+```
+
+6. **Remove the setup trigger comment** from the top of RULES.md (the `<!-- SETUP: ... -->` comment).
+
+**If user declines personalization:** Remove the setup trigger comment and skip. The universal base works standalone. User can run personalization later via `@update-system personalize`.
+
+**If user wants to copy another user's system:** Skip the interview entirely. Copy their RULES.md, skills, hooks, and identity/ files. Adjust personal details (name, tools, areas). The adaptations.md from the source system documents what was personalized and why.
+
 ### Step 7: Memory Setup (Optional but Recommended)
 
 If the user wants cross-session memory (so Claude remembers past conversations):
@@ -726,8 +765,9 @@ This gives the user version history from day one — they can track changes, rev
 
 **If any check fails, fix it now before handing off.** Report what was checked and the result.
 
-8. Tell the user: "Your system is ready at `[OUTPUT_DIR]`. Open your AI coding tool there for daily use — it will auto-load your instructions via the shim files. This template directory stays for future updates — you can `git pull` anytime."
-9. The system is live. First session starts with `@daily`.
+8. **Clean up setup files:** Delete `execution/reference/setup/` — it's no longer needed. The interview data lives in identity/ files and .template-config.md. Future updates use `@update-system`, not the setup guide.
+9. Tell the user: "Your system is ready at `[OUTPUT_DIR]`. Open your AI coding tool there for daily use — it will auto-load your instructions via the shim files."
+10. The system is live. First session starts with `@daily`.
 
 ---
 

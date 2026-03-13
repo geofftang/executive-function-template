@@ -6,10 +6,11 @@
 
 **Step 1:** Ask the user: "Are you setting up a new system, or updating an existing one?"
 
-- **New setup** → Read `ef-system/reference/setup/README.md` (package overview), then `ef-system/reference/setup/SETUP-GUIDE.md` (interview protocol). Follow Phase 1–3.
-- **Update existing** → Read `ef-system/reference/setup/SETUP-GUIDE.md` Phase 4 (Update Protocol). It will find their system path from `.last-output`.
+- **New setup** → Read `execution/reference/setup/README.md` (package overview), then `execution/reference/setup/SETUP-GUIDE.md` (interview protocol). Follow Phase 1–3, including Step 6.5 (personalization).
+- **Update existing** → Read `execution/reference/setup/SETUP-GUIDE.md` Phase 4 (Update Protocol). It will find their system path from `.last-output`.
+- **Copy from another user** → Ask for the source system path. Copy their RULES.md, skills, hooks, and identity/ files. Adjust personal details (name, tools, areas). Skip the interview.
 
-**Auto-detect:** Phase 4 reads `.last-output` (saved during setup) to find the user's system path. If `.last-output` doesn't exist, ask for the path. Then check for `[path]/ef-system/.template-config.md` — if it exists, proceed with update. If not, build the config from their existing files first.
+**Auto-detect:** Phase 4 reads `.last-output` (saved during setup) to find the user's system path. If `.last-output` doesn't exist, ask for the path. Then check for `[path]/execution/.template-config.md` — if it exists, proceed with update. If not, build the config from their existing files first.
 
 ## Rules (apply in both modes)
 
@@ -31,4 +32,4 @@
 The user's personalized system lives in their chosen directory (e.g., `~/executive-function/`). They should:
 1. Open their AI coding tool in that directory for daily use — it has its own `RULES.md` + auto-load shims
 2. Keep this template directory for future updates (`git pull` → run update)
-3. First session (new users) starts with `@morning-planning`
+3. First session (new users) starts with `@daily`
