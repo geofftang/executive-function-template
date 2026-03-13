@@ -44,6 +44,6 @@ The `execution/agentic-patterns.md` file is the clearest expression of the desig
 
 ## Using this template
 
-The `RULES-TEMPLATE.md` is the starting point — it becomes each user's personalized `RULES.md` during setup. Skills in `execution/skills/` can be used as-is or modified — each is self-contained with YAML frontmatter for auto-triggering.
+`RULES.md` is the starting point — open a new AI session in this directory and it routes you through setup automatically. Skills in `execution/skills/` can be used as-is or modified — each is self-contained with YAML frontmatter for auto-triggering.
 
-Start with `execution/agentic-patterns.md` to understand the design philosophy before customizing anything else. Run `execution/reference/setup/SETUP-GUIDE.md` for the full onboarding interview.
+Start with `execution/agentic-patterns.md` to understand the design philosophy before customizing anything else.

@@ -11,18 +11,20 @@ Each entry categorizes changes by update type:
 
 ## 3.0.0
 
-**Universal base + identity-driven personalization.** RULES-TEMPLATE rewritten to serve all users (neurotypical and neurodivergent). Condition-specific content moved from hardcoded to personalization layer driven by identity files. Setup trigger in RULES.md, SETUP-GUIDE self-deletes after completion.
+**Universal base + identity-driven personalization.** RULES.md rewritten to serve all users (neurotypical and neurodivergent). Condition-specific content moved from hardcoded to personalization layer driven by identity files. Setup trigger in RULES.md, SETUP-GUIDE self-deletes after completion. RULES-TEMPLATE.md eliminated — template ships RULES.md directly; @update-system uses intelligent merge (CHANGELOG + adaptations.md) instead of mechanical template copy.
 
 ### Breaking changes
-- RULES-TEMPLATE §2: "ADHD Interrupt Protocol" → "Behavioral Interrupt Protocol" (neutral framing)
-- RULES-TEMPLATE §4: Condition-specific interventions removed from universal base (OCD spiral, Communication by Condition table)
-- RULES-TEMPLATE §4: Clinical terminology reframed ("Wall of Awful" → "Stuck starting", "Guilt Paralysis" → "Feeling unproductive")
+- RULES.md §2: "ADHD Interrupt Protocol" → "Behavioral Interrupt Protocol" (neutral framing)
+- RULES.md §4: Condition-specific interventions removed from universal base (OCD spiral, Communication by Condition table)
+- RULES.md §4: Clinical terminology reframed ("Wall of Awful" → "Stuck starting", "Guilt Paralysis" → "Feeling unproductive")
 - Setup interview now includes personalization phase (Step 6.5) — @plan reads identity/ and researches adaptations
+- `RULES-TEMPLATE.md` eliminated — template ships `RULES.md` directly. @update-system reads CHANGELOG + `identity/adaptations.md` for intelligent merge instead of mechanical substitution.
 
 ### Auto-update (template-owned)
-- `RULES-TEMPLATE.md` — Rewritten as universal base. §2 neutral Behavioral Interrupt Protocol. §4 universal interventions only. New Personalization section pointing to `identity/adaptations.md`. Setup trigger comment at top.
+- `RULES.md` — Rewritten as universal base (was RULES-TEMPLATE.md, now ships directly). §2 neutral Behavioral Interrupt Protocol. §4 universal interventions only. New Personalization section pointing to `identity/adaptations.md`. Setup trigger comment at top.
+- `CLAUDE.md` — Now serves as template routing file (setup vs update vs copy-from-user)
 - `execution/reference/setup/SETUP-GUIDE.md` — Added Step 6.5 (identity-driven personalization via @plan). Step 11 now self-deletes setup directory. Direct-copy path documented.
-- `execution/skills/update-system/SKILL.md` — Added Personalize mode (re-run personalization when identity changes)
+- `execution/skills/update-system/SKILL.md` — Rewritten for intelligent merge (reads CHANGELOG + adaptations.md). Added Personalize mode (re-run personalization when identity changes).
 
 ### New files
 - `identity/adaptations.md` — Generated during setup personalization. Tracks all condition-specific interventions, communication adjustments, and skill trigger modifications with rationale.
@@ -31,6 +33,9 @@ Each entry categorizes changes by update type:
 ### Manual merge (user-owned)
 - `RULES.md` — §2 rename "ADHD Interrupt Protocol" → "Behavioral Interrupt Protocol". §4 remove Communication by Condition table (moved to personalization). §4 reframe interventions to neutral language. Add Personalization section. Condition-specific content now lives in `identity/adaptations.md`.
 - Run `@update-system personalize` to generate `identity/adaptations.md` from your existing identity/ files — this restores your condition-specific adaptations in the new architecture.
+
+### Removed files
+- `RULES-TEMPLATE.md` — Eliminated. Template now ships `RULES.md` directly. No separate template version of any file.
 
 ---
 

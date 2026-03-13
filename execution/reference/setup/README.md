@@ -25,7 +25,7 @@ The template mirrors the actual system structure. Everything at the root (except
 
 | Path | Purpose |
 |------|---------|
-| `RULES-TEMPLATE.md` | System config source — personalized during setup → becomes user's `RULES.md` |
+| `RULES.md` | System config source — personalized during setup → becomes user's `RULES.md` |
 | `identity/profile.md` | User profile template — WOOP plan, energy map, conditions, privacy |
 | `identity/behaviors.md` | Failure modes (FBA), success modes, protective factors, support protocols |
 | `identity/user-manual.md` | Communication style, automation tolerance, hard rules, cognitive traits |
@@ -56,7 +56,7 @@ The template mirrors the actual system structure. Everything at the root (except
 
 | Category | Customization Level | What Changes |
 |----------|-------------------|--------------|
-| `RULES-TEMPLATE.md` | High | Tool ecosystem, interaction depth, root path |
+| `RULES.md` | High | Tool ecosystem, interaction depth, root path |
 | `identity/*.md` | High | WOOP plan, energy map, failure modes, communication style |
 | `state/STATE.md` | Medium | Area names, pillar names |
 | `execution/skills/` | Low-Medium | Path references, tool commands, area names |

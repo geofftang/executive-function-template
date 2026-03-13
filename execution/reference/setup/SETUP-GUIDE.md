@@ -503,7 +503,7 @@ Build this map from the interview, then apply it when writing each customized fi
 
 | Source file | Placeholders |
 |------------|-------------|
-| `RULES-TEMPLATE.md` | `[USER_HOME]`, area/pillar references |
+| `RULES.md` | `[USER_HOME]`, area/pillar references |
 | `state/STATE.md` | `[AREA_1]`-`[AREA_4]`, `[PILLAR_1]`-`[PILLAR_4]`, `[pillar_1]`-`[pillar_4]` |
 | `execution/skills/daily/SKILL.md` | `[AREA_1]`-`[AREA_4]` |
 | `execution/skills/weekly-review/SKILL.md` | `[AREA_1]`-`[AREA_4]` |
@@ -515,7 +515,7 @@ If the user has fewer than 4 areas, remove unused `[AREA_N]` rows/references rat
 
 ### Step 2: Build RULES.md and LLM shims
 
-Read `RULES-TEMPLATE.md` as the source. Write a customized version to `[OUTPUT_DIR]/RULES.md` with:
+Read `RULES.md` as the source. Write a customized version to `[OUTPUT_DIR]/RULES.md` with:
 - Section 1: Their system root path (`[USER_HOME]`) and state file location
 - Section 2: Skills section — Agent Skills discovery (folder-based), ADHD Interrupt Protocol. All skills auto-discover via frontmatter; no manual table needed.
 - Section 3: Their tool ecosystem from interview Q3
@@ -925,7 +925,7 @@ From the changelog entries, build three lists:
 **Manual merge files** (user-owned — show diff, don't replace):
 | Category | Files | Update method |
 |----------|-------|---------------|
-| RULES.md | Root `RULES.md` | Show what changed in template's RULES-TEMPLATE.md. Suggest specific additions. Never overwrite. |
+| RULES.md | Root `RULES.md` | Show what changed in template's RULES.md. Suggest specific additions. Never overwrite. |
 | Identity | `identity/*.md` | Only flag structural changes. User-owned content. |
 | Project hub | `projects/ef-system/ef-system.md` | Only if template changed task structure. Usually no action needed. |
 
@@ -1063,7 +1063,7 @@ Run `setup-skills.sh` to create symlinks and set up hooks.
 
 ### Step 5: Update RULES.md
 
-Read the new `RULES-TEMPLATE.md` from the template. Show the user a diff between their current `RULES.md` and the new structure. Key changes to suggest:
+Read the new `RULES.md` from the template. Show the user a diff between their current `RULES.md` and the new structure. Key changes to suggest:
 - Section 2: Replace skill table with Agent Skills discovery + ADHD Interrupt Protocol
 - Section 3 (was 5): Update tool ecosystem paths (`state/STATE.md`, `execution/skills/mem/SKILL.md`)
 - Section 3.5 (was 5.5): Update file structure diagram to show `identity/`, `execution/`, `state/`

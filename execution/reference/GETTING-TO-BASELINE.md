@@ -8,7 +8,7 @@ Before starting, provide your AI with this command:
 
 ## 2. The Standard Injection
 Copy the template files into your system root. The template contains:
-- `RULES.md` (via `RULES-TEMPLATE.md` — The Universal Standard)
+- `RULES.md` (The Universal Standard — ships with setup trigger)
 - `identity/` (Profile, behaviors, user manual)
 - `execution/skills/` (The Skill Library — folder-based)
 - `execution/reference/` (Supporting docs)

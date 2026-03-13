@@ -493,7 +493,7 @@ Build this map from the interview, then apply it when writing each customized fi
 
 | Source file | Placeholders |
 |------------|-------------|
-| `RULES-TEMPLATE.md` | `[USER_HOME]`, area/pillar references |
+| `RULES.md` | `[USER_HOME]`, area/pillar references |
 | `ef-system/STATE.md` | `[AREA_1]`-`[AREA_4]`, `[PILLAR_1]`-`[PILLAR_4]`, `[pillar_1]`-`[pillar_4]` |
 | `ef-system/skills/morning-planning.md` | `[AREA_1]`-`[AREA_4]` |
 | `ef-system/skills/weekly-review.md` | `[AREA_1]`-`[AREA_4]` |
@@ -505,7 +505,7 @@ If the user has fewer than 4 areas, remove unused `[AREA_N]` rows/references rat
 
 ### Step 2: Build RULES.md and LLM shims
 
-Read `RULES-TEMPLATE.md` as the source. Write a customized version to `[OUTPUT_DIR]/RULES.md` with:
+Read `RULES.md` as the source. Write a customized version to `[OUTPUT_DIR]/RULES.md` with:
 - Section 1: Their system root path (`[USER_HOME]`) and state file location
 - Section 2: Skill commands (start with `@morning-planning` only)
 - Section 3: Skills table (only morning-planning initially, note others available)
@@ -859,7 +859,7 @@ From the changelog entries, build three lists:
 **Manual merge files** (user-owned — show diff, don't replace):
 | Category | Files | Update method |
 |----------|-------|---------------|
-| RULES.md | Root `RULES.md` | Show what changed in template's RULES-TEMPLATE.md. Suggest specific additions. Never overwrite. |
+| RULES.md | Root `RULES.md` | Show what changed in template's RULES.md. Suggest specific additions. Never overwrite. |
 | EF-SYSTEM.md | `ef-system/EF-SYSTEM.md` | Only if template changed task structure. Usually no action needed. |
 
 **New files** (didn't exist in their version):

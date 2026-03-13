@@ -37,7 +37,7 @@ From the changelog entries, build three lists:
 - `ef-system/SYSTEM-STRUCTURE.md` — copy from template, apply substitutions
 
 **Manual merge** (user-owned — show diff, suggest additions, never replace):
-- `RULES.md` — show what changed in template's RULES-TEMPLATE.md, suggest specific edits
+- `RULES.md` — show what changed in template's RULES.md, suggest specific edits
 - `ef-system/EF-SYSTEM.md` — only if template changed task structure
 
 **New files** (didn't exist in user's version):

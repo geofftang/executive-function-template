@@ -25,7 +25,7 @@ The template mirrors the actual system structure. Everything at the root (except
 
 | Path | Purpose |
 |------|---------|
-| `RULES-TEMPLATE.md` | System config source — personalized during setup → becomes user's `RULES.md` |
+| `RULES.md` | System config source — personalized during setup → becomes user's `RULES.md` |
 | `ef-system/STATE.md` | Daily tracking scaffold — populated by @morning-planning |
 | `ef-system/EF-SYSTEM.md` | Task hub + system roadmap |
 | `ef-system/BUILD-PLAN.md` | Architecture + intervention patterns |
@@ -56,7 +56,7 @@ The template mirrors the actual system structure. Everything at the root (except
 
 | Category | Customization Level | What Changes |
 |----------|-------------------|--------------|
-| `RULES-TEMPLATE.md` | High | Tool ecosystem, skills table, interaction depth, root path |
+| `RULES.md` | High | Tool ecosystem, skills table, interaction depth, root path |
 | `ef-system/STATE.md` | Medium | Area names, pillar names |
 | `ef-system/skills/` | Low-Medium | Path references, tool commands, area names |
 | `ef-system/reference/setup/USER-PROFILE-TEMPLATE.md` | High | WOOP plan, energy map, cognitive traits, interaction style |
